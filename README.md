@@ -1,5 +1,5 @@
 # CS35L-Project
-MERN Stack Project
+MERN Stack Project :)
 
 Todo: 
 * Add git howto guide
