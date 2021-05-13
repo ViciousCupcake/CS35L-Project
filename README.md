@@ -2,8 +2,18 @@
 MERN Stack Project :)
 
 Todo: 
-* Add git howto guide
 * figure out a name
+
+## Quick-start
+1. Clone this repo
+2. Install dependencies for the backend: `cd backend; npm install`
+3. Install dependencies for the frontend: `cd frontend; npm install`
+4. Start the backend: `cd ../backend; npm start`
+5. Start the frontend: `cd ../frontend; npm start`
+
+#### Misc Info:
+* Backend by default is hosted at [localhost:8000](http://localhost:8000)
+* Frontend by default is hosted at [localhost:3000](http://localhost:3000)
 
 ## Git How-to Guide:
 #### Cloning A Repo:

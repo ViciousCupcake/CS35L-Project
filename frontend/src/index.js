@@ -4,8 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Change this variable if you change the port that the backend is hosted on.
+window.BACKEND_URL = `localhost:8000`
+
 ReactDOM.render(
-  <h1>CS 35L Final Project</h1>,
+  <App />,
   document.getElementById('root')
 );
 
