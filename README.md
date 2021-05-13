@@ -6,10 +6,11 @@ Todo:
 
 ## Quick-start
 1. Clone this repo
-2. Install dependencies for the backend: `cd backend; npm install`
-3. Install dependencies for the frontend: `cd frontend; npm install`
-4. Start the backend: `cd ../backend; npm start`
-5. Start the frontend: `cd ../frontend; npm start`
+2. Download the `.env` file with all of our secrets, and place it into `./backend/`
+3. Install dependencies for the backend: `cd backend; npm install`
+4. Install dependencies for the frontend: `cd frontend; npm install`
+5. Start the backend: `cd ../backend; npm start`
+6. Start the frontend: `cd ../frontend; npm start`
 
 #### Misc Info:
 * Backend by default is hosted at [localhost:8000](http://localhost:8000)
