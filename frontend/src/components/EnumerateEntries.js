@@ -35,6 +35,7 @@ class EnumerateEntries extends Component {
             <tr>
               <td style={{ width: '250px' }}><b>Name:</b></td>
               <td style={{ width: '250px' }}><b>Date:</b></td>
+              <td style={{ width: '250px' }}><b>Post:</b></td>
             </tr>
             {dataArr}
           </tbody>

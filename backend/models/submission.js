@@ -6,6 +6,9 @@ const SubmissionSchema = new mongoose.Schema({
   },
   submission_date: {
     type: Date
+  },
+  content: {
+    type: String
   }
 });
 
