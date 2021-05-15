@@ -2,7 +2,7 @@
 
 const express = require('express');
 const connect = require('./database');
-const morgan = require('morgan')
+const morgan = require('morgan'); // https://stackoverflow.com/a/64668730/14290793
 const cors = require('cors');
 require('dotenv').config()
 
