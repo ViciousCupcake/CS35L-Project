@@ -7,7 +7,6 @@ class CreateSubmission extends Component {
     super();
     this.state = {
       first_name: '',
-      submission_date: '',
       content: ''
     };
   }
@@ -21,7 +20,7 @@ class CreateSubmission extends Component {
 
     const data = {
       first_name: this.state.first_name,
-      submission_date: this.state.submission_date,
+      submission_date: Date.now(),
       content: this.state.content
     };
     let JSONData = JSON.stringify(data);
@@ -32,7 +31,6 @@ class CreateSubmission extends Component {
       .then(res => {
         this.setState({
           first_name: '',
-          submission_date: '',
           content: ''
         })
       })
@@ -53,13 +51,6 @@ class CreateSubmission extends Component {
             type='text'
             name='first_name'
             value={this.state.first_name}
-            onChange={this.onChange}
-          />
-          <h6>Enter a date</h6>
-          <input
-            type='date'
-            name='submission_date'
-            value={this.state.submission_date}
             onChange={this.onChange}
           />
           <h6>Enter your post</h6>
