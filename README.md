@@ -35,3 +35,9 @@ Todo:
 * Get updates from the server: `git pull`
 * List branches: `git branch`
 * [Other commands:](https://google.com) (Or just ask me)
+
+## Special Thanks
+* [MERN Tutorial](https://blog.logrocket.com/mern-stack-tutorial/)
+* [Google Analytics](https://analytics.google.com)
+* [dotenv Tutorial](https://zetcode.com/javascript/dotenv/)
+* [Node](https://nodejs.org/en/)
