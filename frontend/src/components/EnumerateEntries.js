@@ -25,21 +25,13 @@ class EnumerateEntries extends Component {
   render() {
     const dataFromAPI = this.state.data;
     var dataArr = dataFromAPI.map((submission, k) => <Entry submission={submission} key={k} />);
+    console.log(dataArr)
     return (
       <div>
         { /* graphic design is my passion */}
         <h3>Homepage</h3>
         <a href="/submit">Make a submission</a>
-        <table>
-          <tbody>
-            <tr>
-              <td style={{ width: '250px' }}><b>Name:</b></td>
-              <td style={{ width: '250px' }}><b>Date:</b></td>
-              <td style={{ width: '250px' }}><b>Post:</b></td>
-            </tr>
             {dataArr}
-          </tbody>
-        </table>
       </div>
     );
   }
