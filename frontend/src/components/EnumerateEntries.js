@@ -9,21 +9,26 @@ class EnumerateEntries extends Component {
     this.state = {
       data: []
     };
+    this.sortData = this.sortData.bind(this);
   }
 
   componentDidMount() {
     axios.get(`http://${window.BACKEND_URL}/api/submissions/`)
       .then(response => {
-        this.setState({data: response.data})
+        this.setState({data: this.sortData(response.data)})
       })
       .catch(err => {
         console.error(err);
       })
   };
 
+  sortData(data) {
+    let sortedData = data.sort((a, b) => Date.parse(a.submission_date) - Date.parse(b.submission_date)).reverse();
+    return sortedData;
+  }
 
   render() {
-    const dataFromAPI = this.state.data;
+    const dataFromAPI = this.sortData(this.state.data);
     var dataArr = dataFromAPI.map((submission, k) => <Entry submission={submission} key={k} />);
     console.log(dataArr)
     return (
