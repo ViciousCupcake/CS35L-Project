@@ -9,6 +9,9 @@ const SubmissionSchema = new mongoose.Schema({
   },
   content: {
     type: String
+  },
+  image: {
+    type: String
   }
 });
 
