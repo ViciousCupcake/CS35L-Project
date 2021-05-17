@@ -44,7 +44,7 @@ class CreateSubmission extends Component {
 
   render() {
     return (
-      <div id="submission">
+      <div>
         <h3>Submission Page</h3>
         <a href="./">Return to Homepage</a>
 
