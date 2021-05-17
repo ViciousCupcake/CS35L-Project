@@ -10,7 +10,6 @@ class App extends Component {
     return (
       <Switch>
         <div>
-          <h1>CS35L Final Project</h1>
           {/* HOMEPAGE */}
           <Route exact path='/' component={EnumerateEntries} />
           {/* SUBMISSION */}

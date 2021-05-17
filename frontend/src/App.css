@@ -42,3 +42,14 @@ Also we can get rid of all of the contents of this file-- this is only used for 
     transform: rotate(360deg);
   }
 }
+
+#header {
+  position:relative;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  padding:100px;
+  background: linear-gradient(-45deg, #00b2f3, #23d5ab);
+  color: white;
+  background-color: rgb(36, 108, 150); /* For browsers that do not support gradients */
+  margin-top:0px;
+}
