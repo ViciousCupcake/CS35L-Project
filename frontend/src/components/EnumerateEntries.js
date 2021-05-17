@@ -32,10 +32,10 @@ class EnumerateEntries extends Component {
     var dataArr = dataFromAPI.map((submission, k) => <Entry submission={submission} key={k} />);
     console.log(dataArr)
     return (
-      <div>
-        { /* graphic design is my passion */}
-        <h3>Homepage</h3>
-        <a href="/submit">Make a submission</a>
+      <div id="header">
+        <h1 style={{fontSize:80}}>Site Name Placeholder</h1>
+        <p style={{fontSize:40}}>Item exchanging, made easy.</p> {/*catchy slogan?*/}
+        <a href="/submit" style={{fontSize:25}}>Add your submission today!</a>
             {dataArr}
       </div>
     );
