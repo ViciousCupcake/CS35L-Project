@@ -7,9 +7,12 @@ class EnumerateEntries extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
+      searchInput: ""
     };
     this.sortData = this.sortData.bind(this);
+    this.searchInputChange = this.searchInputChange.bind(this);
+    this.filterPosts = this.filterPosts.bind(this);
   }
 
   componentDidMount() {
@@ -27,14 +30,37 @@ class EnumerateEntries extends Component {
     return sortedData;
   }
 
+  searchInputChange(event){
+    this.setState({searchInput: event.target.value});
+  }
+
+  filterPosts(data, input){
+    const regexp = /[.,'\/#!$%\^&\*;:{}=\-_`~()@]/g;
+    input = input.toLowerCase().replace(regexp,"");
+    if(input !== ""){
+      input = input.split(" ");
+      input = input.filter(function(curr){
+        return curr !== "";
+      })
+      data = data.filter(function(curr){
+        return (input.some(function(word){
+          return (curr.content.toLowerCase().includes(word) || 
+                  curr.first_name.toLowerCase().includes(word));
+        }));
+      });
+    }
+    return data;
+  }
+
   render() {
-    const dataFromAPI = this.sortData(this.state.data);
+    const dataFromAPI = this.filterPosts(this.sortData(this.state.data),this.state.searchInput);
     var dataArr = dataFromAPI.map((submission, k) => <Entry submission={submission} key={k} />);
-    console.log(dataArr)
+    //console.log(dataArr)
     return (
       <div id="header">
         <h1 style={{fontSize:80}}>Site Name Placeholder</h1>
         <p style={{fontSize:40}}>Item exchanging, made easy.</p> {/*catchy slogan?*/}
+        <p><input type="text" placeholder = "Search for posts" onChange = {this.searchInputChange}/></p>
         <a href="/submit" style={{fontSize:25}}>Add your submission today!</a>
             {dataArr}
       </div>
