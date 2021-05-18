@@ -46,25 +46,28 @@ class CreateSubmission extends Component {
     return (
       <div id="submission">
         <h3>Submission Page</h3>
+        <p>Fields marked with an asterisk (*) are required.</p>
         <a href="./">Return to Homepage</a>
 
         <form onSubmit={this.submitForm} method="POST">
-          <h6>Enter your name</h6>
+          <h6>Enter your name*</h6>
           <input
-            type='text'
+            type='text' 
             name='first_name'
             value={this.state.first_name}
             onChange={this.onChange}
+            required
           />
-          <h6>Enter your post</h6>
+          <h6>Enter your post*</h6>
           <textarea 
             style={{width: "370px"}}
             type='text'
             name='content'
             value={this.state.content}
             onChange={this.onChange}
+            required
           />
-          <h6>Enter a link to your image</h6>
+          <h6>Enter a link to your image (optional)</h6>
           <input
             type='text'
             name='image'
