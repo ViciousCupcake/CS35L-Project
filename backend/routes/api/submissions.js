@@ -1,6 +1,7 @@
 const express = require('express');
 const Submission = require('../../models/submission');
 const router = express.Router();
+require('dotenv').config()
 
 // for making sure we can access the backend
 // endpoint: $BASE_URL/api/submissions/test
@@ -34,5 +35,9 @@ router.get('/entry/:id', (req,res) => {
   .catch(error => res.status(500));
 });
 
+// Deliver the API key to frontend
+// endpoint: $BASE_URL/api/submissions/api_key
+// method: GET
+router.get('/api_key', (req, res) => res.send(process.env.GOOGLE_MAPS_API_KEY));
 
 module.exports = router;
