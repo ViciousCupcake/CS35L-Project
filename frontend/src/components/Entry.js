@@ -15,6 +15,9 @@ function Entry(props) {
       <h5>{date}</h5>
       <p>{props.submission.content}</p>
       <img src = {props.submission.image} alt = {altdescription} width = '200' height = '200'></img>
+      <p>
+        <a href={`/post/${props.submission._id}`}> See more info</a>
+      </p>
     </div>
   )
 };

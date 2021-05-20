@@ -25,4 +25,14 @@ router.post('/', (req, res) => {
     .catch(error => res.status(500));
 });
 
+// To get a specific entry
+// endpoint: $BASE_URL/api/submissions/entry/ID
+// method: GET
+router.get('/entry/:id', (req,res) => {
+  Submission.findById(req.params.id)
+  .then(response => res.json(response))
+  .catch(error => res.status(500));
+});
+
+
 module.exports = router;
