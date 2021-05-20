@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import '../App.css';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import { render } from 'react-dom';
 import './styling/SinglePagePost.css';
+import '../App.css';
 
 
 class PostPage extends Component {
@@ -22,6 +20,7 @@ class PostPage extends Component {
         console.error(err);
       })
   };
+  
   render() {
     var alt_desc = 'No Image Was Submitted!';
     if (this.state.data.image){
