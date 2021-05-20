@@ -12,6 +12,10 @@ const SubmissionSchema = new mongoose.Schema({
   },
   image: {
     type: String
+  },
+  location: {
+    type: String,
+    default: ""
   }
 });
 

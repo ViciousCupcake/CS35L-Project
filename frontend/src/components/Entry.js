@@ -11,7 +11,7 @@ function Entry(props) {
   date = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString().split("T")[0];
   return (
     <div className="content-card">
-      <h2>{props.submission.first_name}</h2>
+      <h1>{props.submission.first_name}</h1>
       <h5>{date}</h5>
       <p>{props.submission.content}</p>
       {props.submission.image && 
