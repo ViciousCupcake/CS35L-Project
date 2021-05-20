@@ -4,6 +4,7 @@ import './App.css';
 
 import CreateSubmission from './components/CreateSubmission';
 import EnumerateEntries from './components/EnumerateEntries';
+import PostPage from './components/PostPage';
 
 class App extends Component {
   render() {
@@ -14,6 +15,8 @@ class App extends Component {
           <Route exact path='/' component={EnumerateEntries} />
           {/* SUBMISSION */}
           <Route exact path='/submit' component={CreateSubmission} />
+          {/* SPECIFIC POST PAGE */}
+          <Route path='/post/:id' component={PostPage} />
         </div>
       </Switch>
     );
