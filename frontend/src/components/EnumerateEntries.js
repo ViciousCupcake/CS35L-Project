@@ -35,6 +35,7 @@ class EnumerateEntries extends Component {
   }
 
   filterPosts(data, input){
+    // eslint-disable-next-line
     const regexp = /[.,'\/#!$%\^&\*;:{}=\-_`~()@]/g;
     input = input.toLowerCase().replace(regexp,"");
     if(input !== ""){
