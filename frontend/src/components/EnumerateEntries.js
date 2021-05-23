@@ -35,6 +35,12 @@ class EnumerateEntries extends Component {
   }
 
   filterPosts(data, input){
+    // first remove comments, only include posts
+    data = data.filter(function(curr){
+      return curr.parent === '';
+    });
+
+    // below part is for the search function
     // eslint-disable-next-line
     const regexp = /[.,'\/#!$%\^&\*;:{}=\-_`~()@]/g;
     input = input.toLowerCase().replace(regexp,"");

@@ -35,6 +35,15 @@ router.get('/entry/:id', (req,res) => {
   .catch(error => res.status(500));
 });
 
+// Posting comments
+// endpoint: $BASE_URL/api/submissions/entry/ID
+// method: POST
+router.post('/entry/:id', (req,res) => {
+  Submission.create(req.body)
+    .then(response => res.json({ message: 'Success' }))
+    .catch(error => res.status(500));
+});
+
 // Deliver the API key to frontend
 // endpoint: $BASE_URL/api/submissions/api_key
 // method: GET

@@ -16,6 +16,10 @@ const SubmissionSchema = new mongoose.Schema({
   location: {
     type: String,
     default: ""
+  },
+  parent: {
+    type: String,
+    default: "" // empty string as parent = post, nonempty = comment
   }
 });
 
