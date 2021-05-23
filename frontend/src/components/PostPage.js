@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './styling/SinglePagePost.css';
 import '../App.css';
+import Entry from './Entry';
 
 import SubmitComment from './SubmitComment'
 
@@ -10,8 +11,15 @@ class PostPage extends Component {
     super(props);
     this.state = {
       data: [],
-      googleMapsAPIKey: ""
+      googleMapsAPIKey: "",
+      comments: [],
+      entireData: []
     };
+
+    this.sortData = this.sortData.bind(this);
+    this.getComments = this.getComments.bind(this);
+    this.getEntireData = this.getEntireData.bind(this);
+    //this.displayComments = this.displayComments.bind(this);
   }
   componentDidMount() {
     axios.get(`http://${window.BACKEND_URL}/api/submissions/entry/${this.props.match.params.id}`)
@@ -30,12 +38,43 @@ class PostPage extends Component {
       })
   };
 
+  sortData(data) {
+    let sortedData = data.sort((a, b) => Date.parse(a.submission_date) - Date.parse(b.submission_date));
+    return sortedData;
+  }
+
+  getEntireData(){
+    axios.get(`http://${window.BACKEND_URL}/api/submissions/`)
+    .then(response => {
+      this.setState({entireData: this.sortData(response.data)})
+    })
+    .catch(err => {
+      console.error(err);
+    })
+  }
+
+  getComments(id){
+    let currData = this.state.entireData.slice();
+    currData = currData.filter(function(curr){
+      return curr.parent === id;
+    });
+    return currData; // array containing the comments
+  }
+
+  /*displayComments(){
+
+  }*/
+
   render() {
     var alt_desc = 'No Image Was Submitted!';
     if (this.state.data.image) {
       alt_desc = 'User Uploaded Image'
     }
     console.log(this.state.googleMapsAPIKey);
+
+    this.getEntireData();
+    var commentsArr = this.getComments(this.props.match.params.id);
+    commentsArr = commentsArr.map((submission, k) => <Entry submission={submission} key={k} />);
 
     return (
     <div>
@@ -58,10 +97,10 @@ class PostPage extends Component {
 
       </div>
       <SubmitComment id ={this.props.match.params.id}/>
+      {commentsArr}
     </div>
     );
-  }
-
+  }// <br/>{commentsArr.length}
 }
 
 export default PostPage;

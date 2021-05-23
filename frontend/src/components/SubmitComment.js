@@ -42,8 +42,7 @@ class SubmitComment extends Component {
   }
 
   render(){
-    return( // wait darn should i call it comments or reply / how do i change this depending on if its a post or comment
-            // o wait just pass in a prop for this i guess
+    return(
       <div>
         <form onSubmit = {this.submitForm} method = "POST">
           <h4>Write a comment:</h4>
@@ -55,9 +54,6 @@ class SubmitComment extends Component {
           />
           <input type="submit"/>
         </form>
-
-        {this.state.id}
-        {this.state.content}
 
       </div>
     );
