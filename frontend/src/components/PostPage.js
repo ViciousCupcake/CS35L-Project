@@ -3,6 +3,7 @@ import axios from 'axios';
 import './styling/SinglePagePost.css';
 import '../App.css';
 
+import SubmitComment from './SubmitComment'
 
 class PostPage extends Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class PostPage extends Component {
     console.log(this.state.googleMapsAPIKey);
 
     return (
+    <div>
       <div className="content-card">
         <h1> Post by {this.state.data.first_name} {/* TODO ADD A TITLE TAG */} </h1>
         {/* ignore screen reader warning */}
@@ -55,6 +57,8 @@ class PostPage extends Component {
         </div>
 
       </div>
+      <SubmitComment id ={this.props.match.params.id}/>
+    </div>
     );
   }
 
