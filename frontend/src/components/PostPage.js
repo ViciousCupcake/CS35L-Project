@@ -102,7 +102,7 @@ class PostPage extends Component {
 
         </div>
         <SubmitComment id={this.props.match.params.id} />
-        <CommentTree arr={this.state.entireData.slice()} parentPost={this.props.match.params.id}/>
+        <CommentTree arr={commentsArr} parentPost={this.props.match.params.id}/>
       </div>
     );
   }// <br/>{commentsArr.length}

@@ -17,28 +17,36 @@ class CommentTree extends Component {
 
         this.root_id = props.parentPost;
         var tree = new Map([]);
-        tree.set(props.parentPost, new Comment(props.parentPost, '', '')); // root
         this.state = {
             tree: tree
         };
 
         this.dfsDisplay = this.dfsDisplay.bind(this);
+        this.rebuildTree = this.rebuildTree.bind(this);
+    }
+
+    rebuildTree() {
+        /* For every comment in props.arr:
+        *    1. Add a new map entry, with key = _id, value = Comment
+        *    2. Find its .parent in the map, add to that parent's children
+        */
+        var tree = new Map([]);
+        tree.set(this.root_id, new Comment(this.root_id, '', '')); // root
+        this.props.arr.forEach(comment => {
+            tree.set(comment._id, new Comment(comment._id, comment.parent, comment.content));
+            if (comment.parent !== this.root_id && tree.has(comment.parent))
+                tree.get(comment.parent).children.push(comment._id);
+        });
+        return tree;
+    }
+
+    componentDidMount() {
+        this.setState({tree: this.rebuildTree()});
     }
 
     componentDidUpdate(oldProps) {
         if(oldProps.arr !== this.props.arr){
-            /* For every comment in props.arr:
-            *    1. Add a new map entry, with key = _id, value = Comment
-            *    2. Find its .parent in the map, add to that parent's children
-            */
-            var tree = new Map([]);
-            this.props.arr.forEach(comment => {
-                tree.set(comment._id, new Comment(comment._id, comment.parent, comment.content));
-                if (comment.parent !== this.root_id && tree.has(comment.parent))
-                    tree.get(comment.parent).children.push(comment._id);
-            });
-            this.setState({tree: tree});
-            console.log(tree);
+            this.setState({tree: this.rebuildTree()});
         }
     }
 
@@ -58,6 +66,7 @@ class CommentTree extends Component {
             </div>);
         }
         idx += 1;
+        console.log(this.state.tree.get(curr).id);
         return (
             <div key={idx}>
                 <h3>{this.state.tree.get(curr).text}</h3>
@@ -76,6 +85,7 @@ class CommentTree extends Component {
                 idx += 1000;
             }
         });
+        console.log(this.state.tree);
         return (
             <div>
                 {commentChains}
