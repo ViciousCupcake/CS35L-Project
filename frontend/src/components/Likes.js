@@ -17,6 +17,11 @@ class Likes extends Component {
     )
   }
 
+  componentDidUpdate(oldProps){
+    if(oldProps.likes !== this.props.likes)
+      this.setState({likes: this.props.likes})
+  }
+
   incLikes(event){
     event.preventDefault();
     const data = {

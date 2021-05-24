@@ -61,7 +61,7 @@ class CommentTree extends Component {
                 commentChains.push(this.dfsDisplay(value));
             }
         });
-        console.log(commentChains);
+        //console.log(commentChains);
         return (
             <div>
                 {commentChains}

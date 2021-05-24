@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './styling/SinglePagePost.css';
 import '../App.css';
-import Entry from './Entry';
+import Likes from './Likes'
 
 import SubmitComment from './SubmitComment'
 import CommentTree from './CommentTree'
@@ -26,7 +26,8 @@ class PostPage extends Component {
   componentDidMount() {
     axios.get(`http://${window.BACKEND_URL}/api/submissions/entry/${this.props.match.params.id}`)
       .then(response => {
-        this.setState({ data: response.data })
+        this.setState({ data: response.data });
+        this.getEntireData();
       })
       .catch(err => {
         console.error(err);
@@ -37,7 +38,7 @@ class PostPage extends Component {
       })
       .catch(err => {
         console.error(err);
-      })
+      });
   };
 
   sortData(data) {
@@ -72,9 +73,8 @@ class PostPage extends Component {
     if (this.state.data.image) {
       alt_desc = 'User Uploaded Image'
     }
-    console.log(this.state.googleMapsAPIKey);
+    //console.log(this.state.googleMapsAPIKey);
 
-    this.getEntireData();
     var commentsArr = this.getComments(this.props.match.params.id);
     //commentsArr = commentsArr.map((submission, k) => <Entry submission={submission} key={k} />);
 
@@ -97,9 +97,11 @@ class PostPage extends Component {
 
           </div>
 
+          <Likes likes = {this.state.data.likes} id = {this.props.match.params.id} />
+
         </div>
         <SubmitComment id={this.props.match.params.id} />
-        <CommentTree arr={commentsArr} parentPost={this.state.data._id}/>
+        <CommentTree arr={commentsArr} parentPost={this.props.match.params.id}/>
       </div>
     );
   }// <br/>{commentsArr.length}
