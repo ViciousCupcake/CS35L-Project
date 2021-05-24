@@ -1,5 +1,6 @@
 import React from 'react';
 import './styling/Entry.css';
+import Likes from './Likes'
 
 function Entry(props) {
   var date = new Date(props.submission.submission_date);
@@ -20,6 +21,9 @@ function Entry(props) {
       
       <p>
         <a href={`/post/${props.submission._id}`}> See more info</a>
+      </p>
+      <p>
+        <Likes likes = {props.submission.likes} id = {props.submission._id} />
       </p>
     </div>
   )

@@ -20,6 +20,10 @@ const SubmissionSchema = new mongoose.Schema({
   parent: {
     type: String,
     default: "" // empty string as parent = post, nonempty = comment
+  },
+  likes: {
+    type: Number,
+    default: 0
   }
 });
 

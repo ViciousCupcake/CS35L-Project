@@ -44,6 +44,15 @@ router.post('/entry/:id', (req,res) => {
     .catch(error => res.status(500));
 });
 
+// Update a post
+// endpoint: $BASE_URL/api/submissions/entry/update/ID
+// method: POST
+router.post('/entry/update/:id', (req,res) => {
+  Submission.findByIdAndUpdate(req.params.id, req.body)
+    .then(response => res.json({ message: 'Success' }))
+    .catch(error => res.status(500));
+});
+
 // Deliver the API key to frontend
 // endpoint: $BASE_URL/api/submissions/api_key
 // method: GET
