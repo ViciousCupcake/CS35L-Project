@@ -61,7 +61,7 @@ class CommentTree extends Component {
             const margin = OFFSET + 'px';
             idx += 2;
             subComments.push(
-            <div key={idx} style = {{marginLeft: margin}}>
+            <div key={idx} style ={{marginLeft: margin}}>
                 {this.dfsDisplay(this.state.tree.get(curr).children[i], depth + 1, idx)}
             </div>);
         }
@@ -81,11 +81,11 @@ class CommentTree extends Component {
         var idx = 0;
         this.state.tree.forEach((value) => {
             if (value.parent === this.root_id) { // start dfs from topmost comments
-                commentChains.push(this.dfsDisplay(value.id, 0, idx));
+                commentChains.push(this.dfsDisplay(value.id, 1, idx));
                 idx += 1000;
             }
         });
-        console.log(this.state.tree);
+        console.log(commentChains);
         return (
             <div>
                 {commentChains}

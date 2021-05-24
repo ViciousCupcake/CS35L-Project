@@ -76,7 +76,7 @@ class PostPage extends Component {
     //console.log(this.state.googleMapsAPIKey);
 
     var commentsArr = this.getComments(this.props.match.params.id);
-    //console.log(commentsArr);
+    console.log(commentsArr);
     //commentsArr = commentsArr.map((submission, k) => <Entry submission={submission} key={k} />);
 
     return (
@@ -102,7 +102,7 @@ class PostPage extends Component {
 
         </div>
         <SubmitComment id={this.props.match.params.id} />
-        <CommentTree arr={commentsArr} parentPost={this.props.match.params.id}/>
+        <CommentTree arr={this.state.entireData.slice()} parentPost={this.props.match.params.id}/>
       </div>
     );
   }// <br/>{commentsArr.length}
