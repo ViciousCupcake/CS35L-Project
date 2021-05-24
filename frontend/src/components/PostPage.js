@@ -5,6 +5,7 @@ import '../App.css';
 import Entry from './Entry';
 
 import SubmitComment from './SubmitComment'
+import CommentTree from './CommentTree'
 
 class PostPage extends Component {
   constructor(props) {
@@ -21,6 +22,7 @@ class PostPage extends Component {
     this.getEntireData = this.getEntireData.bind(this);
     //this.displayComments = this.displayComments.bind(this);
   }
+
   componentDidMount() {
     axios.get(`http://${window.BACKEND_URL}/api/submissions/entry/${this.props.match.params.id}`)
       .then(response => {
@@ -43,19 +45,19 @@ class PostPage extends Component {
     return sortedData;
   }
 
-  getEntireData(){
+  getEntireData() {
     axios.get(`http://${window.BACKEND_URL}/api/submissions/`)
-    .then(response => {
-      this.setState({entireData: this.sortData(response.data)})
-    })
-    .catch(err => {
-      console.error(err);
-    })
+      .then(response => {
+        this.setState({ entireData: this.sortData(response.data) })
+      })
+      .catch(err => {
+        console.error(err);
+      })
   }
 
-  getComments(id){
+  getComments(id) {
     let currData = this.state.entireData.slice();
-    currData = currData.filter(function(curr){
+    currData = currData.filter(function (curr) {
       return curr.parent === id;
     });
     return currData; // array containing the comments
@@ -74,31 +76,31 @@ class PostPage extends Component {
 
     this.getEntireData();
     var commentsArr = this.getComments(this.props.match.params.id);
-    commentsArr = commentsArr.map((submission, k) => <Entry submission={submission} key={k} />);
+    //commentsArr = commentsArr.map((submission, k) => <Entry submission={submission} key={k} />);
 
     return (
-    <div>
-      <div className="content-card">
-        <h1> Post by {this.state.data.first_name} {/* TODO ADD A TITLE TAG */} </h1>
-        {/* ignore screen reader warning */}
-        {this.state.data.image && <img src={this.state.data.image} alt={alt_desc}></img>}
-        {this.state.data.location && this.state.googleMapsAPIKey &&
-          <iframe loading="lazy" allowfullscreen title="Google Maps Embed"
-            src={`https://www.google.com/maps/embed/v1/place?q=${this.state.data.location}&key=${this.state.googleMapsAPIKey}`}></iframe>
-        }
-        <p> {this.state.data.content} </p>
+      <div>
+        <div className="content-card">
+          <h1> Post by {this.state.data.first_name} {/* TODO ADD A TITLE TAG */} </h1>
+          {/* ignore screen reader warning */}
+          {this.state.data.image && <img src={this.state.data.image} alt={alt_desc}></img>}
+          {this.state.data.location && this.state.googleMapsAPIKey &&
+            <iframe loading="lazy" allowfullscreen title="Google Maps Embed"
+              src={`https://www.google.com/maps/embed/v1/place?q=${this.state.data.location}&key=${this.state.googleMapsAPIKey}`}></iframe>
+          }
+          <p> {this.state.data.content} </p>
 
-        <div className="contact">
-          <h3>Contact Info:</h3>
-          {this.state.data.first_name && <p>Name: {this.state.data.first_name}</p>}
-          {this.state.data.location && <p>Location: {this.state.data.location}</p>}
+          <div className="contact">
+            <h3>Contact Info:</h3>
+            {this.state.data.first_name && <p>Name: {this.state.data.first_name}</p>}
+            {this.state.data.location && <p>Location: {this.state.data.location}</p>}
+
+          </div>
 
         </div>
-
+        <SubmitComment id={this.props.match.params.id} />
+        <CommentTree arr={commentsArr} parentPost={this.state.data._id}/>
       </div>
-      <SubmitComment id ={this.props.match.params.id}/>
-      {commentsArr}
-    </div>
     );
   }// <br/>{commentsArr.length}
 }
