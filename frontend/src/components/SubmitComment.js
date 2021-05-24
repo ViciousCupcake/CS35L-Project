@@ -24,7 +24,8 @@ class SubmitComment extends Component {
       content: this.state.content,
       image: '',
       location: '',
-      parent: this.state.id
+      parent: this.state.id,
+      likes: 0
     };
     let JSONData = JSON.stringify(data);
     console.log(`Submitting Post Request to http://${window.BACKEND_URL}/api/submissions/entry/${this.state.id} with contents ${JSONData}`)
