@@ -60,16 +60,15 @@ class CommentTree extends Component {
         //console.log(this.state.tree);
         for (var i = 0; i < this.state.tree.get(curr).children.length; ++i) {
             //console.log(curr.children[i]);
-            const margin = OFFSET + 'px';
             idx += 2;
             subComments.push(
-            <div key={idx} style = {{marginLeft: margin}}>
+            <div key={idx}>
                 {this.dfsDisplay(this.state.tree.get(curr).children[i], depth + 1, idx)}
             </div>);
         }
         idx += 1;
 
-        var BLOCKWIDTH = 800 - (OFFSET * 5);
+        var BLOCKWIDTH = 800 - (OFFSET * 4);
         return (
             <div key={idx} id="block" style={{width: BLOCKWIDTH + "px"}}>
                 <div id="chain">
