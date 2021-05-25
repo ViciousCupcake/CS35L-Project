@@ -81,6 +81,7 @@ class PostPage extends Component {
 
     return (
       <div>
+        <a href='/'>Return to Homepage</a>
         <div className="content-card">
           <h1> Post by {this.state.data.first_name} {/* TODO ADD A TITLE TAG */} </h1>
           {/* ignore screen reader warning */}
