@@ -7,6 +7,7 @@ class CreateSubmission extends Component {
     super();
     this.state = {
       first_name: '',
+      title: '',
       content: '',
       image: '',
       location: '',
@@ -24,6 +25,7 @@ class CreateSubmission extends Component {
     const data = {
       first_name: this.state.first_name,
       submission_date: Date.now(),
+      title: this.state.title,
       content: this.state.content,
       image: this.state.image,
       location: this.state.location,
@@ -37,6 +39,7 @@ class CreateSubmission extends Component {
       .then(res => {
         this.setState({
           first_name: '',
+          title: '',
           content: '',
           image: '',
           location: '',
@@ -64,6 +67,15 @@ class CreateSubmission extends Component {
             onChange={this.onChange}
             required
           />
+          <h6>Enter your post title*</h6>
+          <textarea
+            style={{width: "370px"}}
+            type='text'
+            name='title'
+            value={this.state.title}
+            onChange={this.onChange}
+            required
+          />
           <h6>Enter your post*</h6>
           <textarea 
             style={{width: "370px"}}
@@ -80,7 +92,7 @@ class CreateSubmission extends Component {
             value={this.state.image}
             onChange={this.onChange}
           />
-          <h6>Please enter your location</h6>
+          <h6>Enter your location (optional)</h6>
           <input
             type='text'
             name='location'

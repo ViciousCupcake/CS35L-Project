@@ -7,6 +7,9 @@ const SubmissionSchema = new mongoose.Schema({
   submission_date: {
     type: Date
   },
+  title: {
+    type: String
+  },
   content: {
     type: String
   },
