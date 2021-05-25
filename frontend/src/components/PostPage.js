@@ -102,7 +102,9 @@ class PostPage extends Component {
           <Likes likes = {this.state.data.likes} id = {this.props.match.params.id} />
 
         </div>
+        <p id="desc">Start a new comment thread:</p>
         <SubmitComment id={this.props.match.params.id} />
+        <p id="desc">Or, reply to an existing discussion:</p>
         <CommentTree arr={this.state.entireData.slice()} parentPost={this.props.match.params.id}/>
       </div>
     );
