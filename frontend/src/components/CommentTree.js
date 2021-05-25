@@ -22,12 +22,15 @@ class CommentTree extends Component {
 
         this.root_id = props.parentPost;
         var tree = new Map([]);
+        var hiddenComments = new Set([]);
         this.state = {
-            tree: tree
+            tree: tree,
+            hiddenComments: hiddenComments
         };
 
         this.dfsDisplay = this.dfsDisplay.bind(this);
         this.rebuildTree = this.rebuildTree.bind(this);
+        this.hideChain = this.hideChain.bind(this);
     }
 
     rebuildTree() {
@@ -38,11 +41,16 @@ class CommentTree extends Component {
         var tree = new Map([]);
         tree.set(this.root_id, new Comment(this.root_id, '', '', '', 0)); // root
         this.props.arr.forEach(comment => {
-            tree.set(comment._id, new Comment(
-              comment._id, comment.parent, comment.content, comment.first_name, comment.likes
-            ));
-            if (comment.parent !== this.root_id && tree.has(comment.parent))
+            if (!this.state.hiddenComments.has(comment._id)) {
+                tree.set(comment._id, new Comment(comment._id, comment.parent, comment.content, comment.first_name, comment.likes));
+                if (comment.parent !== this.root_id && tree.has(comment.parent) 
+                    && !this.state.hiddenComments.has(comment.parent))
+                    tree.get(comment.parent).children.push(comment._id);
+            } else {
+                console.log(comment.content);
+                tree.set(comment._id, new Comment(comment._id, comment.parent, "This chain has been hidden.", comment.first_name, comment.likes));
                 tree.get(comment.parent).children.push(comment._id);
+            }
         });
         
         this.setState({tree: tree});
@@ -54,6 +62,18 @@ class CommentTree extends Component {
 
     componentDidUpdate(oldProps) {
         if(oldProps.arr !== this.props.arr){
+            this.rebuildTree();
+        }
+    }
+
+    hideChain(id) {
+        if (!this.state.hiddenComments.has(id)) {
+            let updatedHidden = this.state.hiddenComments.add(id);
+            this.setState({hiddenComments: updatedHidden});
+            this.rebuildTree();
+        } else {
+            this.state.hiddenComments.delete(id);
+            this.setState({hiddenComments: this.state.hiddenComments});
             this.rebuildTree();
         }
     }
@@ -75,6 +95,8 @@ class CommentTree extends Component {
         idx += 1;
 
         var BLOCKWIDTH = 800 - (OFFSET * 4);
+        let curr_id = this.state.tree.get(curr).id;
+        let buttonName = this.state.hiddenComments.has(curr_id) ? "Show" : "Hide";
         return (
             <div key={idx} id="block" style={{width: BLOCKWIDTH + "px"}}>
                 <div id="chain">
@@ -83,7 +105,7 @@ class CommentTree extends Component {
                     }
                     <h3>{this.state.tree.get(curr).text}</h3>
                     <div style = {{display: "flex"}}>
-                      <SubmitComment id={this.state.tree.get(curr).id} key={idx} update={this.props.update}/>
+                      <SubmitComment id={curr_id} key={idx} update={this.props.update}/>
                       <div style = {{marginLeft: "auto", marginRight: '20px'}}>
                         {this.state.tree.get(curr).children.length} {
                           this.state.tree.get(curr).children.length === 1 ? "reply" : "replies"
@@ -94,6 +116,7 @@ class CommentTree extends Component {
                           />
                         }
                       </div>
+                      <button onClick={() => this.hideChain(curr_id)}>{buttonName}</button>
                     </div>
                 </div>
                 {subComments}
