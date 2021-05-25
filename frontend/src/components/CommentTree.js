@@ -51,7 +51,7 @@ class CommentTree extends Component {
     }
 
     dfsDisplay(curr, depth, idx) {
-        var OFFSET = depth * 20;
+        var OFFSET = depth * 10;
         var subComments = [];
         //console.log(curr);
         //console.log(this.state.tree[curr]);
@@ -61,12 +61,12 @@ class CommentTree extends Component {
             const margin = OFFSET + 'px';
             idx += 2;
             subComments.push(
-            <div key={idx} style ={{marginLeft: margin}}>
+            <div key={idx} style = {{marginLeft: margin}}>
                 {this.dfsDisplay(this.state.tree.get(curr).children[i], depth + 1, idx)}
             </div>);
         }
         idx += 1;
-        console.log(this.state.tree.get(curr).id);
+        //console.log(this.state.tree.get(curr).id);
         return (
             <div key={idx}>
                 <h3>{this.state.tree.get(curr).text}</h3>
@@ -85,7 +85,7 @@ class CommentTree extends Component {
                 idx += 1000;
             }
         });
-        console.log(commentChains);
+        //console.log(commentChains);
         return (
             <div>
                 {commentChains}

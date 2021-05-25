@@ -75,8 +75,8 @@ class PostPage extends Component {
     }
     //console.log(this.state.googleMapsAPIKey);
 
-    var commentsArr = this.getComments(this.props.match.params.id);
-    console.log(commentsArr);
+    //var commentsArr = this.getComments(this.props.match.params.id);
+    //console.log(commentsArr);
     //commentsArr = commentsArr.map((submission, k) => <Entry submission={submission} key={k} />);
 
     return (
