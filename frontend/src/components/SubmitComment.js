@@ -7,7 +7,8 @@ class SubmitComment extends Component {
     this.state = {
         id: this.props.id,
         first_name: '',
-        content: ''
+        content: '',
+        showForm: false
     };
     this.onChange = this.onChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
@@ -81,7 +82,7 @@ class SubmitComment extends Component {
   render(){
     return(
       <div className='SubmitComment'>
-        <button onClick={() => this.setState({showForm: true})} >Reply</button>
+        <button onClick={() => this.setState({showForm: !this.state.showForm})} >Reply</button>
         {this.state.showForm ? this.showForm() : null}
       </div>
     );
