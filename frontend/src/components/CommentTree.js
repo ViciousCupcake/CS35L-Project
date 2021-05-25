@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import SubmitComment from './SubmitComment';
 import './styling/Comment.css';
 
+import Likes from './Likes'
+
 class Comment {
-    constructor(id, parent, text, first_name) {
+    constructor(id, parent, text, first_name, likes) {
         this.id = id;
         this.parent = parent;
         this.text = text;
         this.children = [];
         this.first_name = first_name;
+        this.likes = likes;
     }
 }
 
@@ -33,9 +36,11 @@ class CommentTree extends Component {
         *    2. Find its .parent in the map, add to that parent's children
         */
         var tree = new Map([]);
-        tree.set(this.root_id, new Comment(this.root_id, '', '', '')); // root
+        tree.set(this.root_id, new Comment(this.root_id, '', '', '', 0)); // root
         this.props.arr.forEach(comment => {
-            tree.set(comment._id, new Comment(comment._id, comment.parent, comment.content, comment.first_name));
+            tree.set(comment._id, new Comment(
+              comment._id, comment.parent, comment.content, comment.first_name, comment.likes
+            ));
             if (comment.parent !== this.root_id && tree.has(comment.parent))
                 tree.get(comment.parent).children.push(comment._id);
         });
@@ -77,7 +82,19 @@ class CommentTree extends Component {
                       <h4>Comment by {this.state.tree.get(curr).first_name}</h4>
                     }
                     <h3>{this.state.tree.get(curr).text}</h3>
-                    <SubmitComment id={this.state.tree.get(curr).id} key={idx} update={this.props.update}/>
+                    <div style = {{display: "flex"}}>
+                      <SubmitComment id={this.state.tree.get(curr).id} key={idx} update={this.props.update}/>
+                      <div style = {{marginLeft: "auto", marginRight: '20px'}}>
+                        {this.state.tree.get(curr).children.length} {
+                          this.state.tree.get(curr).children.length === 1 ? "reply" : "replies"
+                        } &nbsp; {
+                          <Likes 
+                            likes = {this.state.tree.get(curr).likes} 
+                            id = {this.state.tree.get(curr).id}
+                          />
+                        }
+                      </div>
+                    </div>
                 </div>
                 {subComments}
             </div>

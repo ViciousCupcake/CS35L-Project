@@ -11,7 +11,8 @@ class CreateSubmission extends Component {
       content: '',
       image: '',
       location: '',
-      parent: ''
+      parent: '',
+      likes: 0
     };
   }
 
@@ -29,7 +30,8 @@ class CreateSubmission extends Component {
       content: this.state.content,
       image: this.state.image,
       location: this.state.location,
-      parent: ''
+      parent: '',
+      likes: 0
     };
     let JSONData = JSON.stringify(data);
     console.log(`Submitting Post Request to http://${window.BACKEND_URL}/api/submissions with contents ${JSONData}`);
@@ -43,7 +45,8 @@ class CreateSubmission extends Component {
           content: '',
           image: '',
           location: '',
-          parent: ''
+          parent: '', 
+          likes: 0
         })
       })
       .catch(err => {
