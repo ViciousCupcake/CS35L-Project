@@ -85,7 +85,8 @@ class PostPage extends Component {
       <div>
         <a href='/'>Return to Homepage</a>
         <div className="content-card">
-          <h1> Post by {this.state.data.first_name} {/* TODO ADD A TITLE TAG */} </h1>
+          <h1> {this.state.data.title} </h1>
+          <h3> Post by {this.state.data.first_name} </h3>
           {/* ignore screen reader warning */}
           {this.state.data.image && <img src={this.state.data.image} alt={alt_desc}></img>}
           {this.state.data.location && this.state.googleMapsAPIKey &&

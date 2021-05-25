@@ -12,13 +12,12 @@ function Entry(props) {
   date = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString().split("T")[0];
   return (
     <div className="content-card">
-      <h1>{props.submission.first_name}</h1>
+      <h1>{props.submission.title}</h1>
+      <h4>Post by {props.submission.first_name}</h4>
       <h5>{date}</h5>
       <p>{props.submission.content}</p>
       {props.submission.image && 
         <img src = {props.submission.image} alt = {altdescription} width = '200' height = '200'></img>}
-
-      
       <p>
         <a href={`/post/${props.submission._id}`}> See more info</a>
       </p>

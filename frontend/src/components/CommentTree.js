@@ -3,11 +3,12 @@ import SubmitComment from './SubmitComment';
 import './styling/Comment.css';
 
 class Comment {
-    constructor(id, parent, text) {
+    constructor(id, parent, text, first_name) {
         this.id = id;
         this.parent = parent;
         this.text = text;
         this.children = [];
+        this.first_name = first_name;
     }
 }
 
@@ -32,9 +33,9 @@ class CommentTree extends Component {
         *    2. Find its .parent in the map, add to that parent's children
         */
         var tree = new Map([]);
-        tree.set(this.root_id, new Comment(this.root_id, '', '')); // root
+        tree.set(this.root_id, new Comment(this.root_id, '', '', '')); // root
         this.props.arr.forEach(comment => {
-            tree.set(comment._id, new Comment(comment._id, comment.parent, comment.content));
+            tree.set(comment._id, new Comment(comment._id, comment.parent, comment.content, comment.first_name));
             if (comment.parent !== this.root_id && tree.has(comment.parent))
                 tree.get(comment.parent).children.push(comment._id);
         });
@@ -72,6 +73,9 @@ class CommentTree extends Component {
         return (
             <div key={idx} id="block" style={{width: BLOCKWIDTH + "px"}}>
                 <div id="chain">
+                    {this.state.tree.get(curr).first_name &&
+                      <h4>Comment by {this.state.tree.get(curr).first_name}</h4>
+                    }
                     <h3>{this.state.tree.get(curr).text}</h3>
                     <SubmitComment id={this.state.tree.get(curr).id} key={idx} update={this.props.update}/>
                 </div>
