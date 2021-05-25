@@ -49,6 +49,7 @@ class PostPage extends Component {
   getEntireData() {
     axios.get(`http://${window.BACKEND_URL}/api/submissions/`)
       .then(response => {
+        console.log("HERE");
         this.setState({ entireData: this.sortData(response.data) })
       })
       .catch(err => {
@@ -79,6 +80,7 @@ class PostPage extends Component {
     console.log(commentsArr);
     //commentsArr = commentsArr.map((submission, k) => <Entry submission={submission} key={k} />);
 
+    console.log(this.state.entireData.slice());
     return (
       <div>
         <div className="content-card">
@@ -101,8 +103,8 @@ class PostPage extends Component {
           <Likes likes = {this.state.data.likes} id = {this.props.match.params.id} />
 
         </div>
-        <SubmitComment id={this.props.match.params.id} />
-        <CommentTree arr={this.state.entireData.slice()} parentPost={this.props.match.params.id}/>
+        <SubmitComment id={this.props.match.params.id} update={this.getEntireData}/>
+        <CommentTree arr={this.state.entireData.slice()} parentPost={this.props.match.params.id} update={this.getEntireData}/>
       </div>
     );
   }// <br/>{commentsArr.length}

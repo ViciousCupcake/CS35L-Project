@@ -40,6 +40,9 @@ class SubmitComment extends Component {
       .catch(err => {
         console.log(err);
       })
+
+    if (this.props.update !== undefined)
+      this.props.update();
   }
 
   render(){
