@@ -44,12 +44,11 @@ class SubmitComment extends Component {
     if (this.props.update !== undefined)
       this.props.update();
   }
-
-  render(){
-    return(
+  
+  showForm = () => {
+    return (
       <div>
-        <form onSubmit = {this.submitForm} method = "POST">
-          <h4>Write a comment:</h4>
+        <form id = "reply" onSubmit = {this.submitForm} method = "POST">
           <textarea
             type = 'text'
             value = {this.state.content}
@@ -58,7 +57,15 @@ class SubmitComment extends Component {
           />
           <input type="submit"/>
         </form>
+      </div>
+    );
+  }
 
+  render(){
+    return(
+      <div className='SubmitComment'>
+        <button onClick={() => this.setState({showForm: true})} >Reply</button>
+        {this.state.showForm ? this.showForm() : null}
       </div>
     );
   }

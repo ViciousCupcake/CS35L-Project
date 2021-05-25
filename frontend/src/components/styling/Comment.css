@@ -1,0 +1,11 @@
+#chain {
+    color: white;
+    font-size: small;
+}
+
+#desc {
+    color: white;
+    font-size: large;
+    font-style: oblique;
+    font-weight: bold;
+}
