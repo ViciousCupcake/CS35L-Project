@@ -38,16 +38,17 @@ class CommentTree extends Component {
             if (comment.parent !== this.root_id && tree.has(comment.parent))
                 tree.get(comment.parent).children.push(comment._id);
         });
-        return tree;
+        
+        this.setState({tree: tree});
     }
 
     componentDidMount() {
-        this.setState({tree: this.rebuildTree()});
+        this.rebuildTree();
     }
 
     componentDidUpdate(oldProps) {
         if(oldProps.arr !== this.props.arr){
-            this.setState({tree: this.rebuildTree()});
+            this.rebuildTree();
         }
     }
 
@@ -67,11 +68,11 @@ class CommentTree extends Component {
             </div>);
         }
         idx += 1;
-        //console.log(this.state.tree.get(curr).id);
+
         return (
             <div key={idx}>
                 <h3>{this.state.tree.get(curr).text}</h3>
-                <SubmitComment id={this.state.tree.get(curr).id} key={idx} />
+                <SubmitComment id={this.state.tree.get(curr).id} key={idx} update={this.props.update}/>
                 {subComments}
             </div>
         );
@@ -86,9 +87,7 @@ class CommentTree extends Component {
                 idx += 1000;
             }
         });
-
-        // console.log(commentChains);
-
+      
         return (
             <div id="chain">
                 {commentChains}

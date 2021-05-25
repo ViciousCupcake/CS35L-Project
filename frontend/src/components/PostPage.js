@@ -49,6 +49,7 @@ class PostPage extends Component {
   getEntireData() {
     axios.get(`http://${window.BACKEND_URL}/api/submissions/`)
       .then(response => {
+        console.log("HERE");
         this.setState({ entireData: this.sortData(response.data) })
       })
       .catch(err => {
@@ -79,6 +80,7 @@ class PostPage extends Component {
     //console.log(commentsArr);
     //commentsArr = commentsArr.map((submission, k) => <Entry submission={submission} key={k} />);
 
+    console.log(this.state.entireData.slice());
     return (
       <div>
         <a href='/'>Return to Homepage</a>
@@ -96,16 +98,15 @@ class PostPage extends Component {
             <h3>Contact Info:</h3>
             {this.state.data.first_name && <p>Name: {this.state.data.first_name}</p>}
             {this.state.data.location && <p>Location: {this.state.data.location}</p>}
-
           </div>
 
           <Likes likes = {this.state.data.likes} id = {this.props.match.params.id} />
-
         </div>
+        
         <p id="desc">Start a new comment thread:</p>
-        <SubmitComment id={this.props.match.params.id} />
+        <SubmitComment id={this.props.match.params.id} update={this.getEntireData}/>
         <p id="desc">Or, reply to an existing discussion:</p>
-        <CommentTree arr={this.state.entireData.slice()} parentPost={this.props.match.params.id}/>
+        <CommentTree arr={this.state.entireData.slice()} parentPost={this.props.match.params.id} update={this.getEntireData}/>
       </div>
     );
   }// <br/>{commentsArr.length}
