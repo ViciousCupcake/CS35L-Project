@@ -53,7 +53,7 @@ class CommentTree extends Component {
     }
 
     dfsDisplay(curr, depth, idx) {
-        var OFFSET = depth * 10;
+        var OFFSET = depth * 15;
         var subComments = [];
         //console.log(curr);
         //console.log(this.state.tree[curr]);
@@ -69,10 +69,13 @@ class CommentTree extends Component {
         }
         idx += 1;
 
+        var BLOCKWIDTH = 800 - (OFFSET * 5);
         return (
-            <div key={idx}>
-                <h3>{this.state.tree.get(curr).text}</h3>
-                <SubmitComment id={this.state.tree.get(curr).id} key={idx} update={this.props.update}/>
+            <div key={idx} id="block" style={{width: BLOCKWIDTH + "px"}}>
+                <div id="chain">
+                    <h3>{this.state.tree.get(curr).text}</h3>
+                    <SubmitComment id={this.state.tree.get(curr).id} key={idx} update={this.props.update}/>
+                </div>
                 {subComments}
             </div>
         );
@@ -88,10 +91,9 @@ class CommentTree extends Component {
             }
         });
       
+        var styledChains = commentChains.map(c => <div id="block">{c}</div>);
         return (
-            <div id="chain">
-                {commentChains}
-            </div>
+            <>{styledChains}</>
         );
     }
 }
