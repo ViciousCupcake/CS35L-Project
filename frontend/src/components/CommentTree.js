@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SubmitComment from './SubmitComment';
+import './styling/Comment.css';
 
 class Comment {
     constructor(id, parent, text) {
@@ -85,9 +86,9 @@ class CommentTree extends Component {
                 idx += 1000;
             }
         });
-        console.log(commentChains);
+        // console.log(commentChains);
         return (
-            <div>
+            <div id="chain">
                 {commentChains}
             </div>
         );
