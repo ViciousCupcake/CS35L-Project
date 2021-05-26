@@ -53,6 +53,15 @@ router.post('/entry/update/:id', (req,res) => {
     .catch(error => res.status(500));
 });
 
+// Delete a post
+// endpoint: $BASE_URL/api/submissions/entry/delete/ID
+// method: POST
+router.post('/entry/delete/:id', (req,res) => {
+  Submission.findByIdAndDelete(req.params.id, req.body)
+    .then(response => res.json({ message: 'Success' }))
+    .catch(error => res.status(500));
+});
+
 // Deliver the API key to frontend
 // endpoint: $BASE_URL/api/submissions/api_key
 // method: GET
