@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './styling/SinglePagePost.css';
 import '../App.css';
+import './styling/popup.css'
 import Likes from './Likes'
 
 import SubmitComment from './SubmitComment'
@@ -14,7 +15,8 @@ class PostPage extends Component {
       data: [],
       googleMapsAPIKey: "",
       comments: [],
-      entireData: []
+      entireData: [],
+      enabled: false
     };
 
     this.sortData = this.sortData.bind(this);
@@ -65,6 +67,27 @@ class PostPage extends Component {
     return currData; // array containing the comments
   }
 
+  handleBoxChange = event => {
+    //alert(this.state.value)
+    if(event.target.value == "password"){
+      this.setState({enabled : true})
+    }
+    else{
+      this.setState({enabled : false})
+    }
+
+    console.log(event.target.value)
+  }
+  handleButtonChange = () => {
+    const data = {}
+
+    axios
+      .post(`http://${window.BACKEND_URL}/api/submissions/entry/delete/${this.state.data._id}`, data)
+      .then( res => {
+        window.location = '/';
+        alert("Post Successfully Deleted")
+      })
+  }
   /*displayComments(){
 
   }*/
@@ -84,6 +107,30 @@ class PostPage extends Component {
     return (
       <div>
         <a href='/'>Return to Homepage</a>
+        <button className="adminButton" onClick={() => {this.setState({popupVisible: !this.state.popupVisible})}}>Admin Panel</button>
+        { this.state.popupVisible ? 
+        <div className="popup">
+          <div className="popupContent popupCenter">
+            <button className="popupExit" onClick={() => {this.setState({popupVisible: !this.state.popupVisible})}}>&#120;</button>
+            <h1 className="popupCenter">
+              Admin Panel
+            </h1>
+            <h3 className="popupCenter">Are you sure you want to delete this post?</h3>
+            <h5>This action is <span style={{color: 'red'}}>irreversible</span></h5>
+            <p className="popupPara">Enter the Admin Password to continue</p>
+            <input
+              type="password"
+              onChange={this.handleBoxChange}
+              placeholder="Password"
+              className="popupTextBox"
+            />
+            <br />
+            <button className="popupButton" disabled={!this.state.enabled} onClick={this.handleButtonChange}>Delete This Post
+            </button>
+          </div>
+        </div>:null }
+
+
         <div className="content-card">
           <h1> {this.state.data.title} </h1>
           <h3> Post by {this.state.data.first_name} </h3>
