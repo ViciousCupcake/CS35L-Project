@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
+import './styling/mainSearchBox.css'
 import axios from 'axios';
 import Entry from './Entry';
 
@@ -67,7 +68,7 @@ class EnumerateEntries extends Component {
       <div id="header">
         <h1 style={{fontSize:80}}>Site Name Placeholder</h1>
         <p style={{fontSize:40}}>Item exchanging, made easy.</p> {/*catchy slogan?*/}
-        <p><input type="text" placeholder = "Search for posts" onChange = {this.searchInputChange}/></p>
+        <p><input type="text" className="mainSearchBox" placeholder = "Search for posts" onChange = {this.searchInputChange}/></p>
         <a href="/submit" style={{fontSize:25}}>Add your submission today!</a>
             {dataArr}
       </div>

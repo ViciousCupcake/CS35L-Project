@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../App.css';
 import './styling/submission.css'
+import './styling/homepageButton.css'
+
 import axios from 'axios';
 
 class CreateSubmission extends Component {
@@ -58,10 +60,12 @@ class CreateSubmission extends Component {
   render() {
     return (
       <div id="submission" className="bg">
+        <button onClick={() => {window.location = '/'}} className="returnHomeButton">Return to Homepage</button>
+
         <div className="submissionPanel">
           <h1>Submission Page</h1>
           <p>Fields marked with an asterisk (*) are required.</p>
-          <a href="./">Return to Homepage</a>
+
 
           <form onSubmit={this.submitForm} method="POST">
             <h4>Enter your name*</h4>

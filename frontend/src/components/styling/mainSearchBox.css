@@ -1,0 +1,8 @@
+.mainSearchBox{
+    width: 35%;
+    height: 3vh;
+    border-radius: 5px;
+    border-width: 0px;
+    padding-left: 10px;
+    font-size: large;
+}
