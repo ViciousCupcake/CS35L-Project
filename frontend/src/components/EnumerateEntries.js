@@ -63,13 +63,14 @@ class EnumerateEntries extends Component {
   render() {
     const dataFromAPI = this.filterPosts(this.sortData(this.state.data),this.state.searchInput);
     var dataArr = dataFromAPI.map((submission, k) => <Entry submission={submission} key={k} />);
-    //console.log(dataArr)
     return (
       <div id="header">
         <h1 style={{fontSize:80}}>Site Name Placeholder</h1>
         <p style={{fontSize:40}}>Item exchanging, made easy.</p> {/*catchy slogan?*/}
         <p><input type="text" className="mainSearchBox" placeholder = "Search for posts" onChange = {this.searchInputChange}/></p>
         <a href="/submit" style={{fontSize:25}}>Add your submission today!</a>
+        <br></br>
+        <a href="/maps" style={{fontSize:25}}>Browse Post Map!</a>
             {dataArr}
       </div>
     );
