@@ -25,7 +25,9 @@ function Entry(props) {
         <a href={`/post/${props.submission._id}`}> See more info</a>
       </p>
       <p>
-        <Likes likes={props.submission.likes} id={props.submission._id} />
+        {/*{props.submission.children} {
+          props.submission.children === 1 ? "comment" : "comments"
+        } &nbsp;*/} <Likes likes={props.submission.likes} id={props.submission._id} />
       </p>
     </div>
   )

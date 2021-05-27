@@ -114,9 +114,9 @@ class CommentTree extends Component {
                             likes = {this.state.tree.get(curr).likes} 
                             id = {this.state.tree.get(curr).id}
                           />
-                        }
+                        } &nbsp;
+                        <button onClick={() => this.hideChain(curr_id)} >{buttonName}</button>
                       </div>
-                      <button onClick={() => this.hideChain(curr_id)} >{buttonName}</button>
                     </div>
                 </div>
                 {subComments}
