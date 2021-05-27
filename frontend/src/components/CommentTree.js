@@ -101,9 +101,9 @@ class CommentTree extends Component {
             <div key={idx} id="block" style={{width: BLOCKWIDTH + "px"}}>
                 <div id="chain">
                     {this.state.tree.get(curr).first_name &&
-                      <h4>Comment by {this.state.tree.get(curr).first_name}</h4>
+                      <h2>Comment by {this.state.tree.get(curr).first_name}</h2>
                     }
-                    <h3>{this.state.tree.get(curr).text}</h3>
+                    <h4>{this.state.tree.get(curr).text}</h4>
                     <div style = {{display: "flex"}}>
                       <SubmitComment id={curr_id} key={idx} update={this.props.update}/>
                       <div style = {{marginLeft: "auto", marginRight: '20px'}}>
@@ -116,7 +116,7 @@ class CommentTree extends Component {
                           />
                         }
                       </div>
-                      <button onClick={() => this.hideChain(curr_id)}>{buttonName}</button>
+                      <button onClick={() => this.hideChain(curr_id)} >{buttonName}</button>
                     </div>
                 </div>
                 {subComments}

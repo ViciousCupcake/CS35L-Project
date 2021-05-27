@@ -152,7 +152,10 @@ class PostPage extends Component {
         </div>
         
         <p id="desc">Start a new comment thread:</p>
-        <SubmitComment id={this.props.match.params.id} update={this.getEntireData}/>
+        <div className="replyButton">
+        <SubmitComment id={this.props.match.params.id}  update={this.getEntireData}/>
+        </div>
+
         <p id="desc">Or, reply to an existing discussion:</p>
         <CommentTree arr={this.state.entireData.slice()} parentPost={this.props.match.params.id} update={this.getEntireData}/>
       </div>

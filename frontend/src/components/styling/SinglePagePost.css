@@ -26,3 +26,9 @@ iframe {
     border: 0;
     border-radius: 8px;
 }
+
+.replyButton {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -100%);
+}

@@ -57,7 +57,7 @@ class SubmitComment extends Component {
         <form id = "reply" onSubmit = {this.submitForm} method = "POST">
           <textarea
             type = 'text'
-            style = {{width: "240px"}}
+            style = {{width: "30vw", height: "50px", borderRadius: "10px", borderWidth: "0px", padding: "5px"}}
             placeholder = "Write a comment"
             value = {this.state.content}
             onChange = {this.onChange}
@@ -66,7 +66,7 @@ class SubmitComment extends Component {
           /> <br/>
           <textarea
             type = 'text'
-            style = {{width: "240px"}}
+            style = {{width: "30vw", height: "20px", borderRadius: "10px", borderWidth: "0px", padding: "5px"}}
             placeholder = "Enter your name (optional)"
             value = {this.state.first_name}
             onChange = {this.onChange}
@@ -82,7 +82,7 @@ class SubmitComment extends Component {
   render(){
     return(
       <div className='SubmitComment'>
-        <button onClick={() => this.setState({showForm: !this.state.showForm})} >Reply</button>
+        <button onClick={() => this.setState({showForm: !this.state.showForm})} style={{marginBottom: "10px"}} >Reply</button>
         {this.state.showForm ? this.showForm() : null}
       </div>
     );

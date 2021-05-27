@@ -13,7 +13,7 @@ class Likes extends Component {
 
   render() {
     return (
-      <button onClick = {this.incLikes}>{this.state.likes} ♥</button>
+      <button onClick = {this.incLikes}>{this.state.likes} &#x2665;</button>
     )
   }
 
