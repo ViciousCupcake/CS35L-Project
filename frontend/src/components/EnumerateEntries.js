@@ -119,7 +119,6 @@ class EnumerateEntries extends Component {
     this.getData();
     const dataFromAPI = this.sortData(this.filterPosts(this.state.data,this.state.searchInput));
     var dataArr = dataFromAPI.map((submission, k) => <Entry submission={submission} key={k} />);
-    //console.log(dataArr)
     return (
       <div id="header">
         <h1 style={{fontSize:80}}>Site Name Placeholder</h1>
@@ -132,6 +131,8 @@ class EnumerateEntries extends Component {
           {this.state.searchInput !== "" && <option value="relevance">Relevance</option>}
         </select></p>
         <a href="/submit" style={{fontSize:25}}>Add your submission today!</a>
+        <br></br>
+        <a href="/maps" style={{fontSize:25}}>Browse Post Map!</a>
             {dataArr}
       </div>
     );

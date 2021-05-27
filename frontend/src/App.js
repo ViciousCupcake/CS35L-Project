@@ -5,6 +5,7 @@ import './App.css';
 import CreateSubmission from './components/CreateSubmission';
 import EnumerateEntries from './components/EnumerateEntries';
 import PostPage from './components/PostPage';
+import GoogleMaps from './components/GoogleMaps'
 
 class App extends Component {
   render() {
@@ -17,6 +18,8 @@ class App extends Component {
           <Route exact path='/submit' component={CreateSubmission} />
           {/* SPECIFIC POST PAGE */}
           <Route path='/post/:id' component={PostPage} />
+          {/* GOOGLE MAPS PAGE */}
+          <Route path='/maps' component={GoogleMaps} />
         </div>
       </Switch>
     );
