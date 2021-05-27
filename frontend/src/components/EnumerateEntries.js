@@ -9,30 +9,79 @@ class EnumerateEntries extends Component {
     super(props);
     this.state = {
       data: [],
-      searchInput: ""
+      searchInput: "",
+      sortBy: "new"
     };
+    this.getData = this.getData.bind(this);
     this.sortData = this.sortData.bind(this);
     this.searchInputChange = this.searchInputChange.bind(this);
+    this.sortByChange = this.sortByChange.bind(this);
     this.filterPosts = this.filterPosts.bind(this);
   }
 
   componentDidMount() {
     axios.get(`http://${window.BACKEND_URL}/api/submissions/`)
       .then(response => {
-        this.setState({data: this.sortData(response.data)})
+        this.setState({data: response.data})
       })
       .catch(err => {
         console.error(err);
       })
   };
 
+  getData() {
+    axios.get(`http://${window.BACKEND_URL}/api/submissions/`)
+      .then(response => {
+        console.log("HERE");
+        this.setState({ data: this.sortData(response.data) })
+      })
+      .catch(err => {
+        console.error(err);
+      })
+  }
+
   sortData(data) {
-    let sortedData = data.sort((a, b) => Date.parse(a.submission_date) - Date.parse(b.submission_date)).reverse();
-    return sortedData;
+    if(this.state.sortBy === "new"){
+      let sortedData = data.sort((a, b) => Date.parse(b.submission_date) - Date.parse(a.submission_date));
+      return sortedData;
+    }
+    else if(this.state.sortBy === "likes"){
+      let sortedData = data.sort(function(a,b){
+        if(b.likes !== a.likes){
+          return b.likes - a.likes;
+        }
+        else{
+          return Date.parse(b.submission_date) - Date.parse(a.submission_date);
+        }
+      });
+      return sortedData;
+    }
+    else if(this.state.sortBy === "relevance"){      
+      let sortedData = data.sort(function(a,b){
+        if(b.relevance !== a.relevance){
+          return b.relevance - a.relevance;
+        }
+        else if(b.matches !== a.matches){
+          return b.matches - a.matches;
+        }
+        else{
+          return Date.parse(b.submission_date) - Date.parse(a.submission_date);
+        }
+      });
+      return sortedData;
+    }
   }
 
   searchInputChange(event){
     this.setState({searchInput: event.target.value});
+    if(event.target.value === ""){
+      this.setState({sortBy: "new"});
+    }
+  }
+
+  sortByChange(event){
+    this.setState({sortBy: event.target.value});
+    this.getData();
   }
 
   filterPosts(data, input){
@@ -51,17 +100,24 @@ class EnumerateEntries extends Component {
         return curr !== "";
       })
       data = data.filter(function(curr){
-        return (input.some(function(word){
-          return (curr.content.toLowerCase().includes(word) || 
-                  curr.first_name.toLowerCase().includes(word));
-        }));
+        curr.matches = 0;
+        curr.relevance = (input.filter(function(word){
+          var re = new RegExp(word,"g");
+          var tempTitle = (curr.title ? curr.title : "");
+          var wordMatches = (curr.content.toLowerCase().match(re) || []).length;
+          wordMatches += (tempTitle.toLowerCase().match(re) || []).length
+          curr.matches += wordMatches;
+          return wordMatches > 0;
+        })).length;
+        return curr.relevance > 0;
       });
     }
     return data;
   }
 
   render() {
-    const dataFromAPI = this.filterPosts(this.sortData(this.state.data),this.state.searchInput);
+    this.getData();
+    const dataFromAPI = this.sortData(this.filterPosts(this.state.data,this.state.searchInput));
     var dataArr = dataFromAPI.map((submission, k) => <Entry submission={submission} key={k} />);
     //console.log(dataArr)
     return (
@@ -69,6 +125,12 @@ class EnumerateEntries extends Component {
         <h1 style={{fontSize:80}}>Site Name Placeholder</h1>
         <p style={{fontSize:40}}>Item exchanging, made easy.</p> {/*catchy slogan?*/}
         <p><input type="text" className="mainSearchBox" placeholder = "Search for posts" onChange = {this.searchInputChange}/></p>
+        <p>Sort by: <select value = {this.state.sortBy} onChange = {this.sortByChange}>
+          <option value="new">New</option>
+          <option value="likes">Likes</option>
+          {/*<option value="comments">Comments</option>*/}
+          {this.state.searchInput !== "" && <option value="relevance">Relevance</option>}
+        </select></p>
         <a href="/submit" style={{fontSize:25}}>Add your submission today!</a>
             {dataArr}
       </div>
