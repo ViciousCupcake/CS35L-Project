@@ -50,7 +50,7 @@
 }
 
 .adminButton {
-    position: absolute;
+    position: fixed;
     bottom: 3%;
     right: 3%;
     width: 10vw;

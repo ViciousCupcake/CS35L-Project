@@ -106,7 +106,7 @@ class PostPage extends Component {
     console.log(this.state.entireData.slice());
     return (
       <div>
-        <a href='/'>Return to Homepage</a>
+        <button onClick={() => {window.location = '/'}} className="returnHomeButton">Return to Homepage</button>
         <button className="adminButton" onClick={() => {this.setState({popupVisible: !this.state.popupVisible})}}>Admin Panel</button>
         { this.state.popupVisible ? 
         <div className="popup">

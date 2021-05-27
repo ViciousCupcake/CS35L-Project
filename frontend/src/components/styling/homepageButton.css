@@ -1,0 +1,17 @@
+.returnHomeButton {
+    position: absolute;
+    top: 1%;
+    left: 1%;
+    width: auto;
+    height: 3vh;
+    border-radius: 10px;
+    border: 3px;
+    border-color: rgba(8, 46, 46, 0.418);
+    background-color:rgba(8, 46, 46, 0.218);
+    font-size: large;
+}
+
+.returnHomeButton:hover{
+    background-color:rgba(8, 46, 46, 0.318);
+    transition: 100ms ease-in-out; 
+}
