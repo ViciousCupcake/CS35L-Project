@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
+import './styling/submission.css'
 import axios from 'axios';
 
 class CreateSubmission extends Component {
@@ -56,56 +57,71 @@ class CreateSubmission extends Component {
 
   render() {
     return (
-      <div id="submission">
-        <h3>Submission Page</h3>
-        <p>Fields marked with an asterisk (*) are required.</p>
-        <a href="./">Return to Homepage</a>
+      <div id="submission" className="bg">
+        <div className="submissionPanel">
+          <h1>Submission Page</h1>
+          <p>Fields marked with an asterisk (*) are required.</p>
+          <a href="./">Return to Homepage</a>
 
-        <form onSubmit={this.submitForm} method="POST">
-          <h6>Enter your name*</h6>
-          <input
-            type='text' 
-            name='first_name'
-            value={this.state.first_name}
-            onChange={this.onChange}
-            required
-          />
-          <h6>Enter your post title*</h6>
-          <textarea
-            style={{width: "370px"}}
-            type='text'
-            name='title'
-            value={this.state.title}
-            onChange={this.onChange}
-            required
-          />
-          <h6>Enter your post*</h6>
-          <textarea 
-            style={{width: "370px"}}
-            type='text'
-            name='content'
-            value={this.state.content}
-            onChange={this.onChange}
-            required
-          />
-          <h6>Enter a link to your image (optional)</h6>
-          <input
-            type='text'
-            name='image'
-            value={this.state.image}
-            onChange={this.onChange}
-          />
-          <h6>Enter your location (optional)</h6>
-          <input
-            type='text'
-            name='location'
-            value={this.state.location}
-            onChange={this.onChange}
-          />
-          <br />
-          <input type="submit" />
-        </form>
-      </div >
+          <form onSubmit={this.submitForm} method="POST">
+            <h4>Enter your name*</h4>
+            <input
+              type='text' 
+              name='first_name'
+              value={this.state.first_name}
+              onChange={this.onChange}
+              required
+              className="textbox"
+              placeholder="John Doe"
+            />
+            <h4>Enter your post title*</h4>
+            <textarea
+              style={{width: "370px"}}
+              type='text'
+              name='title'
+              value={this.state.title}
+              onChange={this.onChange}
+              required
+              className="textbox"
+              placeholder="Fresh Tomatoes for Sale!"
+
+            />
+            <h4>Enter your post*</h4>
+            <textarea 
+              style={{width: "370px"}}
+              type='text'
+              name='content'
+              value={this.state.content}
+              onChange={this.onChange}
+              required
+              className="textbox"
+              placeholder="I grew too many tomatoes... anyone want some?"
+
+            />
+            <h4>Enter a link to your image (optional)</h4>
+            <input
+              type='text'
+              name='image'
+              value={this.state.image}
+              onChange={this.onChange}
+              className="textbox"
+              placeholder="https://farmerjohn.com/assets/tomatoes.png"
+            />
+            <h4>Enter your location (optional)</h4>
+            <input
+              type='text'
+              name='location'
+              value={this.state.location}
+              onChange={this.onChange}
+              className="textbox"
+              placeholder="UCLA Boelter Hall"
+
+            />
+            <br />
+            <input className="submit" type="submit" />
+          </form>
+        </div >
+      </div>
     );
   }
 }
