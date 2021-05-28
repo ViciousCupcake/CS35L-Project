@@ -14,6 +14,7 @@ class GoogleMaps extends Component {
                 {/* TODO: button doesn't work for some reason, but does if you comment out mapcontainer */}
                 <button onClick={() => {window.location = '/'}} className="returnHomeButton">Return to Homepage</button>
                 <MapContainer/>
+                <p></p>
             </>
         );
     }

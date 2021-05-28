@@ -116,7 +116,6 @@ class EnumerateEntries extends Component {
   }
 
   render() {
-    this.getData();
     const dataFromAPI = this.sortData(this.filterPosts(this.state.data,this.state.searchInput));
     var dataArr = dataFromAPI.map((submission, k) => <Entry submission={submission} key={k} />);
     return (
