@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import axios from 'axios';
-
-var mar = window.screen.width * 0.05;
-
-const mapStyles = {
-    margin: mar,
-    width: '90%',
-    height: '80%'
-};
+import './styling/PostMap.css'
 
 // class MarkerObject extends React.Component{
     // onMarkerClick = (props, marker, e) =>
@@ -127,13 +120,13 @@ export class MapContainer extends Component {
             <Map
                 google={this.props.google}
                 zoom={14}
-                style={mapStyles}
                 initialCenter={
                     {
                         lat: 34.0689,
                         lng: -118.4452
                     }
                 }
+                className="postMap"
             >
                 <Marker
                     onClick={this.onMarkerClick}
