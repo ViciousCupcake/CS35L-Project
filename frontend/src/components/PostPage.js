@@ -106,9 +106,7 @@ class PostPage extends Component {
     console.log(this.state.entireData.slice());
     return (
       <div>
-        <button onClick={() => {window.location = '/'}} className="returnHomeButton">Return to Homepage</button>
-        <button className="adminButton" onClick={() => {this.setState({popupVisible: !this.state.popupVisible})}}>Admin Panel</button>
-        { this.state.popupVisible ? 
+                { this.state.popupVisible ? 
         <div className="popup">
           <div className="popupContent popupCenter">
             <button className="popupExit" onClick={() => {this.setState({popupVisible: !this.state.popupVisible})}}>&#120;</button>
@@ -129,6 +127,9 @@ class PostPage extends Component {
             </button>
           </div>
         </div>:null }
+        <button onClick={() => {window.location = '/'}} className="returnHomeButton">Return to Homepage</button>
+        <button className="adminButton" onClick={() => {this.setState({popupVisible: !this.state.popupVisible})}}>Admin Panel</button>
+
 
 
         <div className="content-card">
