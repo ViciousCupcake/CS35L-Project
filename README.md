@@ -9,8 +9,10 @@ Todo:
 2. Download the `.env` file with all of our secrets, and place it into `./backend/`
 3. Install dependencies for the backend: `cd backend; npm install`
 4. Install dependencies for the frontend: `cd frontend; npm install`
-5. Start the backend: `cd ../backend; npm start`
-6. Start the frontend: `cd ../frontend; npm start`
+5. Download dependencies for Google Maps API: `cd ..; npm install --save google-maps-react`
+6. Start the backend: `cd ../backend; npm start`
+7. Start the frontend: `cd ../frontend; npm start`
+
 
 #### Misc Info:
 * Backend by default is hosted at [localhost:8000](http://localhost:8000)

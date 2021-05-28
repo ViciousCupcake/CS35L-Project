@@ -69,7 +69,7 @@ class PostPage extends Component {
 
   handleBoxChange = event => {
     //alert(this.state.value)
-    if(event.target.value == "password"){
+    if(event.target.value === "password"){
       this.setState({enabled : true})
     }
     else{
