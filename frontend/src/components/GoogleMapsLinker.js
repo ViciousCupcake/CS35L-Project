@@ -176,6 +176,12 @@ export class MapContainer extends Component {
                 {this.makemarker(2)}
                 {this.makemarker(3)}
                 {this.makemarker(4)}
+                {/* can hardcode beyond number of locations with no issues */}
+                {this.makemarker(5)}
+                {this.makemarker(6)}
+                {this.makemarker(7)}
+                {this.makemarker(8)}
+                {this.makemarker(9)}
 
 
 
