@@ -62,12 +62,15 @@ export class MapContainer extends Component {
         // console.log("test" + i + this.state.furthestloaded);
 
         if (i <= this.state.furthestloaded) {
-            console.log('test' + i);
-            console.log(this.state.markerarglist[i][0]+ ": " + this.state.markerarglist[i][1]);
+            console.log(this.state.data[this.state.locationdatalist[i]]);
             return (
                 <Marker
                     onClick={this.onMarkerClick}
-                    name={this.state.data[this.state.locationdatalist[i]].location}
+                    name={this.state.data[this.state.locationdatalist[i]].first_name}
+                    link={this.state.data[this.state.locationdatalist[i]]._id}
+                    title={this.state.data[this.state.locationdatalist[i]].title}
+                    content={this.state.data[this.state.locationdatalist[i]].content}
+                    likes={this.state.data[this.state.locationdatalist[i]].likes}
                     position = {{
                         lat: this.state.markerarglist[i][0],
                         lng: this.state.markerarglist[i][1]
@@ -92,17 +95,17 @@ export class MapContainer extends Component {
     //       {this.state.Markerlist}
     //     }
     // }
-    makeinfowindow(i) {
-        <InfoWindow
-            marker={this.state.activeMarker}
-            visible={this.state.showingInfoWindow}
-            onClose={this.onClose}
-        >
-            <div>
-                <h4>{this.state.selectedPlace.name}</h4>
-            </div>
-        </InfoWindow>
-    }
+    // makeinfowindow(i) {
+    //     <InfoWindow
+    //         marker={this.state.activeMarker}
+    //         visible={this.state.showingInfoWindow}
+    //         onClose={this.onClose}
+    //     >
+    //         <div>
+    //             <h4>{this.state.selectedPlace.name}</h4>
+    //         </div>
+    //     </InfoWindow>
+    // }
 
     onMarkerClick = (props, marker, e) =>
         this.setState({
@@ -127,8 +130,8 @@ export class MapContainer extends Component {
                     if (this.state.data[i].location !== "") {
                         this.state.locationlist.push(this.state.data[i].location);
                         this.state.locationdatalist.push(i);
-                        console.log(this.state.locationdatalist);
-                        console.log(this.state.data[this.state.locationdatalist[2]]);
+                        // console.log(this.state.locationdatalist);
+                        // console.log(this.state.data[this.state.locationdatalist[2]]);
                     }
                 }
 
@@ -147,7 +150,7 @@ export class MapContainer extends Component {
                         this.setState({markerarglist: data2});
                         this.setState({ isloading: false });
                         this.setState({furthestloaded: (this.state.markerarglist.length - 1)});
-                        console.log(this.state.furthestloaded);
+                        // console.log(this.state.furthestloaded);
                     }))
                     .catch(err => {
                         console.error(err);
@@ -187,6 +190,11 @@ export class MapContainer extends Component {
                 {this.makemarker(7)}
                 {this.makemarker(8)}
                 {this.makemarker(9)}
+                {this.makemarker(10)}
+                {this.makemarker(11)}
+                {this.makemarker(12)}
+                {this.makemarker(13)}
+                {this.makemarker(14)}
 
                 <InfoWindow
                     marker={this.state.activeMarker}
@@ -194,7 +202,11 @@ export class MapContainer extends Component {
                     onClose={this.onClose}
                 >
                     <div>
-                        <h4>{this.state.selectedPlace.name}</h4>
+                        <h2>{this.state.selectedPlace.title}</h2>
+                        <h3>{this.state.selectedPlace.content}</h3>
+                        <h5>{"Post by: " + this.state.selectedPlace.name}</h5>
+                        <h6>{"Likes: " + this.state.selectedPlace.likes}</h6>
+                        <a href={`/post/${this.state.selectedPlace.link}`}> See more info</a>
                     </div>
                 </InfoWindow>
 
