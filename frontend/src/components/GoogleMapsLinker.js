@@ -67,7 +67,7 @@ export class MapContainer extends Component {
             return (
                 <Marker
                     onClick={this.onMarkerClick}
-                    name={'UCLA'}
+                    name={this.state.data[this.state.locationdatalist[i]].location}
                     position = {{
                         lat: this.state.markerarglist[i][0],
                         lng: this.state.markerarglist[i][1]
@@ -128,25 +128,30 @@ export class MapContainer extends Component {
                         this.state.locationlist.push(this.state.data[i].location);
                         this.state.locationdatalist.push(i);
                         console.log(this.state.locationdatalist);
+                        console.log(this.state.data[this.state.locationdatalist[2]]);
                     }
                 }
+
+                var waitarray = [];
+
                 for (var j = 0; j < this.state.locationlist.length; j++) {
-                    axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.locationlist[j]}&key=AIzaSyDMwA04uo7ZnSSigDPQ3gjShffoxtdpi4M`)
-                        .then(response => {
-                            var data = [];
-                            data.push(response.data.results[0].geometry.location.lat);
-                            data.push(response.data.results[0].geometry.location.lng);
-                            var data2 = this.state.markerarglist;
-                            data2.push(data);
-                            this.setState({markerarglist: data2});
-                            this.setState({ isloading: false });
-                            this.setState({furthestloaded: (this.state.markerarglist.length - 1)});
-                            console.log(this.state.furthestloaded);
-                        })
-                        .catch(err => {
-                            console.error(err);
-                        })
+                    waitarray.push(axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.locationlist[j]}&key=AIzaSyDMwA04uo7ZnSSigDPQ3gjShffoxtdpi4M`));
                 }
+                Promise.all(waitarray)
+                    .then(responses => responses.forEach(response => {
+                        var data = [];
+                        data.push(response.data.results[0].geometry.location.lat);
+                        data.push(response.data.results[0].geometry.location.lng);
+                        var data2 = this.state.markerarglist;
+                        data2.push(data);
+                        this.setState({markerarglist: data2});
+                        this.setState({ isloading: false });
+                        this.setState({furthestloaded: (this.state.markerarglist.length - 1)});
+                        console.log(this.state.furthestloaded);
+                    }))
+                    .catch(err => {
+                        console.error(err);
+                    })
             })
             .catch(err => {
                 console.error(err);
@@ -183,6 +188,15 @@ export class MapContainer extends Component {
                 {this.makemarker(8)}
                 {this.makemarker(9)}
 
+                <InfoWindow
+                    marker={this.state.activeMarker}
+                    visible={this.state.showingInfoWindow}
+                    onClose={this.onClose}
+                >
+                    <div>
+                        <h4>{this.state.selectedPlace.name}</h4>
+                    </div>
+                </InfoWindow>
 
 
             </Map>
