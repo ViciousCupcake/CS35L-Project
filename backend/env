@@ -1,0 +1,9 @@
+USERNAME=GeneBlock
+PASSWORD=Smallberg
+DB_LOCATION=cluster0.hy6oj.mongodb.net
+API_PORT=8000
+GOOGLE_MAPS_API_KEY=AIzaSyDWjzPJMTztkQFUBcpmgY03AizVWAH8Yn4
+GOOGLE_CLIENT_ID=1045535550449-c826e06gd4dhv1lt1r2om7dv942dud42.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=NaezUAICwpYBQOYyZORntVn4
+MONGO_URI=mongodb+srv://GeneBlock:Smallberg@cluster0.svtt1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+COOKIE_KEY=abcdefghijklmnopqrstuvwxyz
