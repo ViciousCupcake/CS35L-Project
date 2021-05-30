@@ -3,6 +3,7 @@ import '../App.css';
 import './styling/mainSearchBox.css'
 import axios from 'axios';
 import Entry from './Entry';
+import Login, { query } from './Login';
 
 class EnumerateEntries extends Component {
   constructor(props) {
@@ -10,7 +11,8 @@ class EnumerateEntries extends Component {
     this.state = {
       data: [],
       searchInput: "",
-      sortBy: "new"
+      sortBy: "new",
+      user: {}
     };
     this.getData = this.getData.bind(this);
     this.sortData = this.sortData.bind(this);
@@ -116,10 +118,14 @@ class EnumerateEntries extends Component {
   }
 
   render() {
+    var user;
+    query(user);
+    console.log(user);
     const dataFromAPI = this.sortData(this.filterPosts(this.state.data,this.state.searchInput));
     var dataArr = dataFromAPI.map((submission, k) => <Entry submission={submission} key={k} />);
     return (
       <div id="header">
+        <div style = {{display: 'flex', justifyContent: 'flex-end'}}><Login/></div>
         <h1 style={{fontSize:80}}>Site Name Placeholder</h1>
         <p style={{fontSize:40}}>Item exchanging, made easy.</p> {/*catchy slogan?*/}
         <p><input type="text" className="mainSearchBox" placeholder = "Search for posts" onChange = {this.searchInputChange}/></p>
