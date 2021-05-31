@@ -28,7 +28,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Allow CORS Policy-- This prevents a nasty bug 
-app.use(cors());
+app.use(cors({
+    origin: "http://localhost:3000",
+    methods: "GET, POST",
+    credentials: true
+}));
 
 app.use(express.json());
 
