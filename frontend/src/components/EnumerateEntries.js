@@ -127,7 +127,7 @@ class EnumerateEntries extends Component {
     return (
       <div id="header">
         <div style = {{display: 'flex', justifyContent: 'flex-end'}}><Login/></div>
-        <h1 style={{fontSize:80}}>Site Name Placeholder</h1>
+        <h1 style={{fontSize:80}}>Mark It and Market</h1>
         <p style={{fontSize:40}}>Item exchanging, made easy.</p> {/*catchy slogan?*/}
         <p><input type="text" className="mainSearchBox" placeholder = "Search for posts" onChange = {this.searchInputChange}/></p>
         <p>Sort by: <select value = {this.state.sortBy} onChange = {this.sortByChange}>
