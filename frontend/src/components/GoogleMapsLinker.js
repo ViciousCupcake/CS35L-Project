@@ -3,40 +3,8 @@ import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import axios from 'axios';
 import './styling/PostMap.css'
 
-// class MarkerObject extends React.Component{
-    // onMarkerClick = (props, marker, e) =>
-    //     this.setState({
-    //         selectedPlace: props,
-    //         activeMarker: marker,
-    //         showingInfoWindow: true
-    //     });
 
-    // onClose = props => {
-    //     if (this.state.showingInfoWindow) {
-    //         this.setState({
-    //             showingInfoWindow: false,
-    //             activeMarker: null
-    //         });
-    //     }
-    // };
-
-//     return (
-//             // <Marker
-//             //     onClick={this.onMarkerClick}
-//             //     name={'props.'}
-//             // />
-//             // <InfoWindow
-//             //     marker={this.state.activeMarker}
-//             //     visible={this.state.showingInfoWindow}
-//             //     onClose={this.onClose}
-//             // >
-//             //     <div>
-//             //         <h4>{this.props.data.first_name}</h4>
-//             //     </div>
-//             // </InfoWindow>
-//         // </>
-//     )
-// }
+var googleMapsAPIKey = "AIzaSyDMwA04uo7ZnSSigDPQ3gjShffoxtdpi4M";
 
 export class MapContainer extends Component {
     constructor(props) {
@@ -59,8 +27,6 @@ export class MapContainer extends Component {
     };
 
     makemarker(i) {
-        // console.log("test" + i + this.state.furthestloaded);
-
         if (i <= this.state.furthestloaded) {
             console.log(this.state.data[this.state.locationdatalist[i]]);
             return (
@@ -71,41 +37,15 @@ export class MapContainer extends Component {
                     title={this.state.data[this.state.locationdatalist[i]].title}
                     content={this.state.data[this.state.locationdatalist[i]].content}
                     likes={this.state.data[this.state.locationdatalist[i]].likes}
-                    position = {{
+                    position={{
                         lat: this.state.markerarglist[i][0],
                         lng: this.state.markerarglist[i][1]
                     }}
-                    
+
                 />
             );
         }
     }
-
-
-
-    // showMarkers() {
-    //     for (var i = 0; i < this.state.markerarglist.length; i++) {
-    //         if (i <= this.state.furthestloaded) {
-
-    //         }            
-    //         console.log("testing");
-    //         this.state.Markerlist.push(this.makemarker(i));
-    //     }
-    //     return{
-    //       {this.state.Markerlist}
-    //     }
-    // }
-    // makeinfowindow(i) {
-    //     <InfoWindow
-    //         marker={this.state.activeMarker}
-    //         visible={this.state.showingInfoWindow}
-    //         onClose={this.onClose}
-    //     >
-    //         <div>
-    //             <h4>{this.state.selectedPlace.name}</h4>
-    //         </div>
-    //     </InfoWindow>
-    // }
 
     onMarkerClick = (props, marker, e) =>
         this.setState({
@@ -130,15 +70,13 @@ export class MapContainer extends Component {
                     if (this.state.data[i].location !== "") {
                         this.state.locationlist.push(this.state.data[i].location);
                         this.state.locationdatalist.push(i);
-                        // console.log(this.state.locationdatalist);
-                        // console.log(this.state.data[this.state.locationdatalist[2]]);
                     }
                 }
 
                 var waitarray = [];
 
                 for (var j = 0; j < this.state.locationlist.length; j++) {
-                    waitarray.push(axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.locationlist[j]}&key=AIzaSyDMwA04uo7ZnSSigDPQ3gjShffoxtdpi4M`));
+                    waitarray.push(axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.locationlist[j]}&key=${googleMapsAPIKey}`));
                 }
                 Promise.all(waitarray)
                     .then(responses => responses.forEach(response => {
@@ -147,10 +85,9 @@ export class MapContainer extends Component {
                         data.push(response.data.results[0].geometry.location.lng);
                         var data2 = this.state.markerarglist;
                         data2.push(data);
-                        this.setState({markerarglist: data2});
+                        this.setState({ markerarglist: data2 });
                         this.setState({ isloading: false });
-                        this.setState({furthestloaded: (this.state.markerarglist.length - 1)});
-                        // console.log(this.state.furthestloaded);
+                        this.setState({ furthestloaded: (this.state.markerarglist.length - 1) });
                     }))
                     .catch(err => {
                         console.error(err);
@@ -159,9 +96,11 @@ export class MapContainer extends Component {
             .catch(err => {
                 console.error(err);
             })
+
     };
 
     render() {
+
         return (
             <Map
                 google={this.props.google}
@@ -174,11 +113,7 @@ export class MapContainer extends Component {
                 }
                 className="postMap"
             >
-                {/* <script>
-                    for (var i; i < this.state.markerarglist.length; i++)
-                    {this.makemarker(0)}
-                </script> */}
-                
+
                 {this.makemarker(0)}
                 {this.makemarker(1)}
                 {this.makemarker(2)}
@@ -218,30 +153,6 @@ export class MapContainer extends Component {
 
 export default GoogleApiWrapper(
     (props) => ({
-        apiKey: "AIzaSyDMwA04uo7ZnSSigDPQ3gjShffoxtdpi4M"
+        apiKey: googleMapsAPIKey
     }
     ))(MapContainer)
-
-
-
-                // {/* <Marker
-                //     onClick={this.onMarkerClick}
-                //     name={'UCLA'}
-                //     position = {{
-                //         lat: 34.09,
-                //         lng: -118.4452
-                //     }}
-                // />
-                // <InfoWindow
-                //     marker={this.state.activeMarker}
-                //     visible={this.state.showingInfoWindow}
-                //     onClose={this.onClose}
-                // >
-                //     <div>
-                //         <h4>{this.state.selectedPlace.name}</h4>
-                //     </div>
-                // </InfoWindow> */}
-
-
-
-                // {/* {this.state.Markerlist} */}

@@ -31,7 +31,8 @@ The page aggregating all posts, so that you can see which farmers are closest to
 4. Install dependencies for the frontend: `cd frontend; npm install`
 5. Start the backend: `cd ../backend; npm start`
 6. Start the frontend: `cd ../frontend; npm start`
-5. Visit the website at [localhost:3000](localhost:3000)
+7. Insert Google Maps API key in GoogleMapsLinker.js
+8. Visit the website at [localhost:3000](localhost:3000)
 
 
 #### Misc Info:
@@ -66,6 +67,8 @@ GOOGLE_CLIENT_SECRET=fill in the blank
 COOKIE_KEY=fill in the blank
 ```
 
+
+
 ## Git How-to Guide:
 #### Cloning A Repo:
 1. `cd` into the folder you want to clone (aka download) this repo to
@@ -95,3 +98,4 @@ Thanks for the help!
 * Google's [Maps Embed API Documentation](https://developers.google.com/maps/documentation/embed/get-started) provides guidence on how to efficiently get started with the Google Maps API.
 * Jan Bodnar's [dotenv Tutorial](https://zetcode.com/javascript/dotenv/) (2020) is a brief tutorial going over what [dotenv](https://www.npmjs.com/package/dotenv) does and how you can use it in your own applications
 * The OpenJS Foundation's [Node](https://nodejs.org/en/) is a useful JavaScript runtime that powers both the frontend and the backend of this project.
+* Rachael Njeri's [How to Integrate the Google Maps API into React Applications](https://www.digitalocean.com/community/tutorials/how-to-integrate-the-google-maps-api-into-react-applications) is a tutorial going over the basics of using the Google Maps React API
