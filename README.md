@@ -50,6 +50,8 @@ The environment variables should be stored into `./backend/.env`. This file shou
 | GOOGLE_CLIENT_ID          | fill in the blank          | fill in the blank                                    | fill in the blank                                                                       |
 | GOOGLE_CLIENT_SECRET      | fill in the blank          | fill in the blank                                    | fill in the blank                                                                       |
 | COOKIE_KEY                | fill in the blank          | fill in the blank                                    | fill in the blank                                                                       |
+
+
 Put these 8 entries into `./backend/.env` in the format `ENVIRONMENT_VARIABLE=ENVIRONMENT_KEY`
 
 For example,
