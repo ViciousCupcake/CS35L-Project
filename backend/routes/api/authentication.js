@@ -13,12 +13,12 @@ router.get('/oauth/google/callback', passport.authenticate(
 ));
 
 router.get('/current_user', (req, res) => {
-    res.send(req.isAuthenticated());
+    res.send(req.user);
 });
 
 router.get('/logout', (req, res) => {
     req.logout();
-    res.send(req.user);
+    res.redirect('http://localhost:3000');
 });
 
 module.exports = router;

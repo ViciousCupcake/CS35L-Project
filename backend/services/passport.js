@@ -12,11 +12,13 @@ passport.use(
         callbackURL: '/api/authentication/oauth/google/callback',
     },
     (access, refresh, profile, done) => {
+        console.log(profile);
         users.findOne({googleID: profile.id}).then(user => {
             if (user) {
                 done(null, user);
             } else {
-                new users({googleID: profile.id}).save().then(newUser =>
+                new users({name: profile.name.givenName, googleID: profile.id}).save()
+                .then(newUser =>
                     done(null, newUser)
                 );
             }
