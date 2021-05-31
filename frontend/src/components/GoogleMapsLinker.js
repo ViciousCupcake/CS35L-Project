@@ -23,7 +23,6 @@ export class MapContainer extends Component {
             isloading: true,
             furthestloaded: -1
         }
-
     };
 
     makemarker(i) {
