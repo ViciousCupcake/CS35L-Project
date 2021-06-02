@@ -11,7 +11,7 @@ UCLA CS 35L Project, Spring 2021, under the supervision of Professor Paul Eggert
 * Leonard Chen
 
 ## About
-Over time, farmers around the world have few means to advertise their produce to local customers around them, despite the proliferation of technology in the world around us. This project, a novel web application built using the [MERN Stack](https://bootcamp.berkeley.edu/resources/coding/learn-node-js/node-js-understanding-mern-stack/#:~:text=The%20MERN%20stack%20is%20comprised%20of%20four%20powerful,tandem.%20They%20are%3A%20MongoDB%3A%20An%20open-source%2C%20document-based%20database.), aims to alleviate this issue. We aim to connect local farmers with every-day people, so that customers can buy produce straight from farmers. This benefits farmers in that farmers are no longer forced to sell to produce conglomerate corporations, and instead can sell straight to the consumer. This results in increased profit margins for the farmer while allowing the consumer to enjoy farm-fresh produce.
+With the proliferation of big companies and corporate chains, it can be difficult for local farmers, hobbyists, bakers, etc. to have a reliable way to reach an audience of consumers interested in purchasing their homemade or home-grown goods. This project, a novel web application built using the [MERN Stack](https://bootcamp.berkeley.edu/resources/coding/learn-node-js/node-js-understanding-mern-stack/#:~:text=The%20MERN%20stack%20is%20comprised%20of%20four%20powerful,tandem.%20They%20are%3A%20MongoDB%3A%20An%20open-source%2C%20document-based%20database.), aims to alleviate this issue. We aim to connect these local producers with everyday members of the community around them, so that customers can buy locally and support small/home businesses instead of relying on big corporations.
 
 ## Screenshots
 The Home Page:
@@ -20,7 +20,7 @@ A individual post's page:
 ![Individual Posting](./assets/individual_post.png)
 The submission page to create a posting:
 ![Submission Page](./assets/submission_page.png)
-The page aggregating all posts, so that you can see which farmers are closest to you.
+The page aggregating all posts, so that you can see which listings are closest to you.
 ![Aggregate Post Map](./assets/aggregate_map.png)
 
 ## Quick-start
