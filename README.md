@@ -29,10 +29,11 @@ The page aggregating all posts, so that you can see which listings are closest t
     * For more info on creating the environment file, see the [Environment Variables](#environment-variables) section
 3. Install dependencies for the backend: `cd backend; npm install`
 4. Install dependencies for the frontend: `cd frontend; npm install`
-5. Start the backend: `cd ../backend; npm start`
-6. Start the frontend: `cd ../frontend; npm start`
-7. Insert Google Maps API key in GoogleMapsLinker.js
-8. Visit the website at [localhost:3000](localhost:3000)
+5. If installing fails due to dependency conflicts, pass `--force`.
+6. Start the backend: `cd ../backend; npm start`
+7. Start the frontend: `cd ../frontend; npm start`
+8. Insert Google Maps API key in GoogleMapsLinker.js
+9. Visit the website at [localhost:3000](localhost:3000)
 
 
 #### Misc Info:
@@ -100,3 +101,4 @@ Thanks for the help!
 * The OpenJS Foundation's [Node](https://nodejs.org/en/) is a useful JavaScript runtime that powers both the frontend and the backend of this project.
 * Rachael Njeri's [How to Integrate the Google Maps API into React Applications](https://www.digitalocean.com/community/tutorials/how-to-integrate-the-google-maps-api-into-react-applications) (2020) is a tutorial going over the basics of using the Google Maps React API.
 * Stephen Grider's [Node with React: Fullstack Web Development](https://www.udemy.com/course/node-with-react-fullstack-web-development/) goes over how to use Passport.js to integrate OAuth login.
+* Mongoose [Docs](https://mongoosejs.com/docs/guides.html).
