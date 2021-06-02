@@ -49,8 +49,8 @@ class EnumerateEntries extends Component {
     }
     else if(this.state.sortBy === "likes"){
       let sortedData = data.sort(function(a,b){
-        if(b.likes !== a.likes){
-          return b.likes - a.likes;
+        if(b.likes.length !== a.likes.length){
+          return b.likes.length - a.likes.length;
         }
         else{
           return Date.parse(b.submission_date) - Date.parse(a.submission_date);
