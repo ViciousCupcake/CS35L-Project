@@ -4,7 +4,7 @@ import axios from 'axios';
 import './styling/PostMap.css'
 
 
-var googleMapsAPIKey = "AIzaSyDMwA04uo7ZnSSigDPQ3gjShffoxtdpi4M";
+var googleMapsAPIKey = "INSERT GOOGLE MAPS API KEY HERE";
 
 export class MapContainer extends Component {
     constructor(props) {
