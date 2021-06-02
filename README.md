@@ -48,9 +48,9 @@ The environment variables should be stored into `./backend/.env`. This file shou
 | `DB_LOCATION`               | `cluster5.abcde.mongodb.net` | The address that your database is hosted at          |                Follow the instructions at [https://docs.mongodb.com/guides/cloud/account/](https://docs.mongodb.com/guides/cloud/account/)                                                                         |
 | `API_PORT`                  | `8000`                       | The port that the backend will be hosted on          | Choose a port number that doesn't conflict with an pre-existing process on your machine |
 | `GOOGLE_MAPS_API_KEY`       | `aBcDeFgH12345`              | The API Key used for Google Maps                     | Follow the instructions at https://developers.google.com/maps/documentation/javascript/get-api-key                 |
-| `GOOGLE_CLIENT_ID`          | `fill in the blank`          | fill in the blank                                    | fill in the blank                                                                       |
-| `GOOGLE_CLIENT_SECRET`      | `fill in the blank`          | fill in the blank                                    | fill in the blank                                                                       |
-| `COOKIE_KEY`                | `fill in the blank`          | fill in the blank                                    | fill in the blank                                                                       |
+| `GOOGLE_CLIENT_ID`          | `asdfq273450652393adf;lfasdfkwer.apps.googleusercontent.com`          | App identifier used in OAuth flow             | Set up OAuth in a Google Cloud project                                                                      |
+| `GOOGLE_CLIENT_SECRET`      | `LasdouHgsfgTasdf`          | Identifier used in OAuth flow to make sure app isn't being impersonated                                    | Set up OAuth in a Google Cloud project                                                                       |
+| `COOKIE_KEY`                | `asdfgkjhsdlkgf;sd`          | The cookie sent back on requests                     | Type anything you want                                                                       |
 
 
 Put these 8 entries into `./backend/.env` in the format `ENVIRONMENT_VARIABLE=ENVIRONMENT_KEY`
@@ -62,9 +62,9 @@ PASSWORD=MongoPswd1
 DB_LOCATION=cluster5.abcde.mongodb.net
 API_PORT=8000
 GOOGLE_MAPS_API_KEY=aBcDeFgH12345
-GOOGLE_CLIENT_ID=fill in the blank
-GOOGLE_CLIENT_SECRET=fill in the blank
-COOKIE_KEY=fill in the blank
+GOOGLE_CLIENT_ID=asdfq273450652393adf;lfasdfkwer.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=LasdouHgsfgTasdf
+COOKIE_KEY=asdfgkjhsdlkgf;sd
 ```
 
 
@@ -98,4 +98,5 @@ Thanks for the help!
 * Google's [Maps Embed API Documentation](https://developers.google.com/maps/documentation/embed/get-started) provides guidence on how to efficiently get started with the Google Maps API.
 * Jan Bodnar's [dotenv Tutorial](https://zetcode.com/javascript/dotenv/) (2020) is a brief tutorial going over what [dotenv](https://www.npmjs.com/package/dotenv) does and how you can use it in your own applications
 * The OpenJS Foundation's [Node](https://nodejs.org/en/) is a useful JavaScript runtime that powers both the frontend and the backend of this project.
-* Rachael Njeri's [How to Integrate the Google Maps API into React Applications](https://www.digitalocean.com/community/tutorials/how-to-integrate-the-google-maps-api-into-react-applications) (2020) is a tutorial going over the basics of using the Google Maps React API
+* Rachael Njeri's [How to Integrate the Google Maps API into React Applications](https://www.digitalocean.com/community/tutorials/how-to-integrate-the-google-maps-api-into-react-applications) (2020) is a tutorial going over the basics of using the Google Maps React API.
+* Stephen Grider's [Node with React: Fullstack Web Development](https://www.udemy.com/course/node-with-react-fullstack-web-development/) goes over how to use Passport.js to integrate OAuth login.
