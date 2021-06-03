@@ -36,7 +36,7 @@ export class MapContainer extends Component {
                     link={this.state.data[this.state.locationdatalist[i]]._id}
                     title={this.state.data[this.state.locationdatalist[i]].title}
                     content={this.state.data[this.state.locationdatalist[i]].content}
-                    likes={this.state.data[this.state.locationdatalist[i]].likes}
+                    likes={this.state.data[this.state.locationdatalist[i]].likes.length}
                     position={{
                         lat: this.state.markerarglist[i][0],
                         lng: this.state.markerarglist[i][1]
@@ -74,7 +74,6 @@ export class MapContainer extends Component {
                 }
 
                 var waitarray = [];
-
                 for (var j = 0; j < this.state.locationlist.length; j++) {
                     waitarray.push(axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.locationlist[j]}&key=${googleMapsAPIKey}`));
                 }
