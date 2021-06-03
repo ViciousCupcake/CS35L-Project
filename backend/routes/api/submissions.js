@@ -67,4 +67,11 @@ router.post('/entry/delete/:id', (req,res) => {
 // method: GET
 router.get('/api_key', (req, res) => res.send(process.env.GOOGLE_MAPS_API_KEY));
 
+// Delete all entries from mongoDB
+// endpoint: $BASE_URL/api/submissions/delete/everything
+// method: GET
+router.get('/delete/everything', (req, res) => {
+  Submission.deleteMany({}).then(response => res.send('success'))
+})
+
 module.exports = router;
