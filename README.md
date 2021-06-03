@@ -100,5 +100,5 @@ Thanks for the help!
 * Jan Bodnar's [dotenv Tutorial](https://zetcode.com/javascript/dotenv/) (2020) is a brief tutorial going over what [dotenv](https://www.npmjs.com/package/dotenv) does and how you can use it in your own applications
 * The OpenJS Foundation's [Node](https://nodejs.org/en/) is a useful JavaScript runtime that powers both the frontend and the backend of this project.
 * Rachael Njeri's [How to Integrate the Google Maps API into React Applications](https://www.digitalocean.com/community/tutorials/how-to-integrate-the-google-maps-api-into-react-applications) (2020) is a tutorial going over the basics of using the Google Maps React API.
-* Stephen Grider's [Node with React: Fullstack Web Development](https://www.udemy.com/course/node-with-react-fullstack-web-development/) goes over how to use Passport.js to integrate OAuth login.
-* Mongoose [Docs](https://mongoosejs.com/docs/guides.html).
+* Stephen Grider's [Node with React: Fullstack Web Development](https://www.udemy.com/course/node-with-react-fullstack-web-development/) (2021) goes over how to use Passport.js to integrate OAuth login.
+* The Mongoose [Docs](https://mongoosejs.com/docs/guides.html) is an essential tool that we used, when trying to tie our backend to communicate to MongoDB.
