@@ -27,7 +27,7 @@ The page aggregating all posts, so that you can see which listings are closest t
 
 ## Quick-start
 1. Clone this repo by running `git clone https://github.com/ViciousCupcake/CS35L-Project.git`
-2. Create the `.env` file with all of our secrets, and place it into `./backend/`
+2. Create the `.env` file with all of our secrets, and place it into `./backend/`. You may have to source the .env file with `. .env`.
     * For more info on creating the environment file, see the [Environment Variables](#environment-variables) section
 3. Install dependencies for the backend: `cd backend; npm install`
 4. Install dependencies for the frontend: `cd frontend; npm install`
