@@ -4,6 +4,8 @@ UCLA CS 35L Project, Spring 2021, under the supervision of Professor Paul Eggert
 
 A brief introductory presentation can be found [here](https://docs.google.com/presentation/d/1YokNChb-7_DgWa6LyA2Zi7kGglTwVdaCNXmvLPgBRd0/edit?usp=sharing). Note that you need to be signed in with your Google Apps for UCLA Account to be able to view.
 
+[Here](https://youtu.be/kdvpa0Ug8kU) is a demo video showcasing the features of our project.
+
 ### Authors:
 * Alan Yao
 * Annie Liu
