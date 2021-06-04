@@ -2,6 +2,8 @@
 
 UCLA CS 35L Project, Spring 2021, under the supervision of Professor Paul Eggert and our lovely TAs.
 
+A brief introductory presentation can be found [here](https://docs.google.com/presentation/d/1YokNChb-7_DgWa6LyA2Zi7kGglTwVdaCNXmvLPgBRd0/edit?usp=sharing).
+
 ### Authors:
 * Alan Yao
 * Annie Liu
